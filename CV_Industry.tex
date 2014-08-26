@@ -26,7 +26,14 @@
 %\usepackage{newcent} % To change the default font to the new century schoolbook postscript font uncomment this line and comment the one above
 
 \usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={green!50!black},
+    citecolor={green!50!black},
+    urlcolor={blue!80!black}
+}
 \usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[T1]{fontenc}
 
 \setlength{\textwidth}{5.1in} % Text width of the document
 
@@ -36,13 +43,16 @@
 %	NAME AND ADDRESS SECTION
 %----------------------------------------------------------------------------------------
 
-\moveleft.5\hoffset\centerline{\large\bf Ikram Ullah} % Your name at the top
+\moveleft.5\hoffset\centerline{\huge\textbf{\textsc{Ikram Ullah}} } % Your name at the top
  
 \moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip % Horizontal line after name; adjust line thickness by changing the '1pt'
  
-\moveleft.5\hoffset\centerline{Studentbacken 21/1515} % Your address
-\moveleft.5\hoffset\centerline{11557, Stockholm}
-\moveleft.5\hoffset\centerline{(073) 936-6175}
+\moveleft.5\hoffset\centerline{Studentbacken 21/1515 \hfill \href{mailto:ikramu@kth.se}{ikramu@kth.se}} % Your address
+\moveleft.5\hoffset\centerline{G\"ardet, 11557 \hfill \href{tel:+46739366175}{+46 73 936 6175}}%(073) 936-6175}
+\moveleft.5\hoffset\centerline{Stockholm \hfill \href{http://www.nada.kth.se/~ikramu/}{http://www.nada.kth.se/$\sim$ikramu/}}
+%\moveleft.5\hoffset\centerline{}
+%\moveleft.5\hoffset\centerline{}
+\moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip % Horizontal line after name; adjust line thickness by changing the '1pt'
 
 %----------------------------------------------------------------------------------------
 
@@ -54,62 +64,109 @@
  
 \section{OBJECTIVE}  
 
-To model and implement market-based eco-friendly solutions for real world problems utilizing sound mathematical principles, with the help of latest hardware and software technologies.
+To model and implement market-based eco-friendly solutions for challenging problems utilizing sound mathematical principles, latest software, and hardware technologies.
 
 %To model and implement mathematically inspired eco-friendly solutions for real world phenomena, with a focus on market-based solutions, using latest hardware and software.
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{EDUCATION}
+
+{\bf \color{Black}{Doctor of Philosophy},} Computer Science \\
+{\color{RubineRed}{Kungliga Tekniska H\"{o}gskolan, Sweden}} \hfill \textit{Jun 2010 -- Sep 2014} \\
+Concentration: Machine Learning \\
+Minor: Bioinformatics 
+
+%-----------------------------------------%
+{\bf \color{Black}{Exchange Student},} Computer Science \\
+{\color{RubineRed}{University of Limerick, Ireland}} \hfill \textit{Mar 2009 -- Aug 2009} \\
+Concentration: Software Engineering 
+
+%-----------------------------------------%
+{\bf \color{Black}{Master of Science,}} Computer Science \\
+{\color{RubineRed}{Lahore University of Management Sciences (LUMS), Pakistan}} \hfill \textit{Sep 2006 -- Aug 2009} \\
+Concentration: Artificial Intelligence \\
+Minor: Software Engineering
+
+%-----------------------------------------%
+{\bf \color{Black}{Bachelor of Science,}} Computer Science \\
+{\color{RubineRed}{University of Peshawar, Pakistan}} \hfill \textit{Jan 2002 -- Mar 2006} \\
+Concentration: Computer Science \\
+Minor: Mathematics
 
 %----------------------------------------------------------------------------------------
 %	PROFESSIONAL EXPERIENCE SECTION
 %----------------------------------------------------------------------------------------
  
-\section{EXPERIENCE}
+\section{PROFESSIONAL \\ EXPERIENCE}
 
-{\sl Statistician/Mathematician} \hfill Oct 2009 -- May 2010 \\
-SATMAP Inc, Machine Learning Department, Karachi, Pakistan  \\
-SATMAP is an enterprise call center application used for intelligent call routing. I worked with a team of data scientist to:
+{\sl \color{Brown}{\textbf{Statistician/Mathematician}}} \hfill \textit{Oct 2009 -- May 2010} \\
+{\color{RubineRed}{SATMAP Inc, Machine Learning Team, Pakistan}}  \\
+SATMAP is an enterprise call center application used for intelligent call routing used by Fortune 500 companies like AT\&T, Gieco, Time Warners Cables etc. I worked with a team of algorithm designers in:
 
 \begin{itemize} \itemsep -2pt % Reduce space between items
-\item Evaluating newer machine learning/data mining algorithms on call center data. 
-\item Implementing, testing, and integrating them with SATMAP. 
+\item Evaluating novel machine learning/data mining algorithms on call center data. 
+\item Implementing, testing, and integrating selected algorithms with SATMAP. 
 \end{itemize}
  
-{\sl Consulting/Freelancing} \hfill On-and-off \\
-Odesk \hfill \href{https://www.odesk.com/users/~013a228837c241737c}{https://www.odesk.com/users/$\sim$013a228837c241737c} \\
-I consulted mainly for machine learning projects. Some of these include: 
+{\sl \textbf{\color{Brown}{\textbf{Research Assistant}}}} \hfill \textit{Dec 2007 -- Oct 2008} \\
+{\color{RubineRed}{Computer Science Department, LUMS, Pakistan}} 
+\begin{itemize} 
+\item Woking with XVCL: an open source library providing component based Document/View Architecture support for developers.
+\item Teaching assistant for Advanced Software Engineering course
+\end{itemize} 
+
+{\sl \textbf{\color{Brown}{\textbf{Chief Data Scientist}}}} \hfill \textit{April 2014 onward} \\
+{\color{RubineRed}{Greenely, Sweden}} \\
+Greenely is an eco-friendly energy management tool, built at KTH, to optimize household electricity consumption using energy disaggregation algorithms and user behavior mining.
+\begin{itemize} 
+\item Leading overall team
+\item Managing and optimizing the server-side of the software
+\item Implementing energy disaggregation algorithms
+\end{itemize} 
+
+{\sl \textbf{\color{Brown}{\textbf{Consulting/Freelancing}}}} \hfill \textit{Mid-2008 onwards} \\
+{\color{RubineRed}{Odesk Corporation} \hfill \href{https://www.odesk.com/users/~013a228837c241737c}{Odesk profile link}} \\
+I started consulting at rentacoder.com (now acquired by freelancer.com) and then switched to odesk.com, offering consultancy mainly for machine learning projects. Some of these include: 
 
 \begin{itemize} \itemsep -2pt % Reduce space between items
 \item Stock value analysis and prediction using association rule mining
 \item Text classification using different machine learning algorithms in Rapidminer 
-\item Barcode scanning using computer vision algorithms
+\item Quality based classification of barcode images using computer vision algorithms
 \end{itemize} 
- 
-{\sl Research Assistant} \hfill Dec 2007 – Oct 2008 \\
-Computer Science Department, Lahore University of Management Sciences. 
-\begin{itemize} 
-\item Woking with XVCL: an open source component library that provides component based Document/View Architecture support for developers.
-\item Teaching assistant for software engineering course
-\end{itemize} 
+Details on any of above (and those not listed here) can be furnished on demand.
 
-{\sl Software Internee} \hfill Summers 2007 \\
-Five Rivers Technologies, Lahore
+{\sl \textbf{\color{Brown}{\textbf{Software Internee}}}} \hfill \textit{Summers 2007} \\
+{\color{RubineRed}{Five Rivers Technologies, Lahore}}
 \begin{itemize}
-\item Part of the group implementing a dual streaming/synchronization server for mobile devices.
+\item Part of the group implementing a dual streaming/synchronization server for mobile devices using Funambol DS Server and video streaming APIs.
 \end{itemize} 
 
+%----------------------------------------------------------------------------------------
+%	Team leading SECTION
+%---------------------------------------------------------------------------------------- 
+\section{TEAM LEADING \\ EXPERIENCE}
+\begin{itemize}
+\item I managed a small team of developers in Pakistan during my \href{https://www.odesk.com/users/~013a228837c241737c}{consultancy career}. Major team responsiblities included task allocation, time allocation, and ensuring team collaboration.
+\item Recently, I am managing a group of KTH masters students in
+\end{itemize}
 %----------------------------------------------------------------------------------------
 %	Modeling SECTION
 %---------------------------------------------------------------------------------------- 
 
-\section{MODELING \\ SKILLS}
+\section{MAJOR \\ SUBJECTS}
 
-Over the course of my academic/industry career, I have had the opportunity to work in multiple modeling/algorithmic areas. Some of them include:  \\
+Following are some of the courses I took at KTH during my PhD. 
 \begin{itemize}
-\item Probabilistic graphical models especially Bayesian hierarchical models
-\item Combanitorial tree search algorithms based on dynamic programming
-\item Unsupervised learning especially mixture models
-\item Support Vector Machines 
-\item Markov Chain Monte Carlo, especially Metropolis-based sampling methods
-\item Expectation Maximization
+\item High performance computing
+\item Advanced machine learning and Bayesian methods
+\item Graph theory and algorithms
+\item Elements of statistical learning
+\item Algorithmic bioinformatics
+\item Scientific writing
+\item Quantitative system biology
 \end{itemize} 
 
 %----------------------------------------------------------------------------------------
@@ -118,50 +175,35 @@ Over the course of my academic/industry career, I have had the opportunity to wo
 
 \section{COMPUTER \\ SKILLS} 
 
-{\bf Languages:} 
+%{\sl \textbf{\color{Brown}{\textbf{Chief Data Scientist}}}}
+{\bf \color{Brown}{Languages:}} 
 C++, Java, R, Matlab, C\#,  \\
-{\bf Misc Tools:} Bash, CMake, Python, (Some) Boost C++ libraries, OpenMPI, MySQL, SQL Server, RapidMiner, Weka, Git, SVN, Netbeans, Eclipse, and different Bioinformatics tools. \\
-{\bf Operating Systems:} Unix, Windows and OS X.  \\
-{\bf HPC Clusters:} Worked on 4 Swedish Unix-based super computers (Ferlin, Triolith, Tintin, and Abisko)
-
-%----------------------------------------------------------------------------------------
-%	EDUCATION SECTION
-%----------------------------------------------------------------------------------------
-
-\section{EDUCATION}
-
-{\bf Doctor of Philosophy,} Computer Science \\
-Kungliga Tekniska Högskolan, Sweden. expected December Oct 2014 \\
-Concentration: Machine Learning \\
-Minor: Genetics 
-
-%-----------------------------------------%
-{\bf Master of Science,} Computer Science \\
-Lahore University of Management Sciences, Pakistan. Sep 2006 -- Aug 2009 \\
-Concentration: Machine Learning \\
-Minor: Software Engineering
-
-%-----------------------------------------%
-{\bf Exchange Student,} Computer Science \\
-University of Limerick, Ireland. Mar 2009 -- Aug 2009 \\
-Concentration: Software Engineering 
-
-%-----------------------------------------%
-{\bf Bachelor of Science,} Computer Science \\
-University of Peshawar, Pakistan. Jan 2002 -- Jan 2006 \\
-Concentration: Computer Science 
+{\bf \color{Brown}{Misc Tools:}} Bash, CMake, Python, Boost C++ libraries, OpenMPI \& Boost-MPI, MySQL, SQL Server, RapidMiner, Weka, Git, SVN, Netbeans, Eclipse, and different Bioinformatics tools. \\
+{\bf \color{Brown}{Operating Systems:}} Unix, Windows and OS X.  \\
+{\bf \color{Brown}{High Performance Computing Clusters:}} Developed software using 4 Swedish Unix-based super computers (\href{https://www.pdc.kth.se/resources/computers/ferlin}{Ferlin}, \href{https://www.nsc.liu.se/systems/triolith/}{Triolith}, \href{http://www.uppmax.uu.se/}{Tintin}, and \href{http://www.hpc2n.umu.se/resources/abisko}{Abisko})
 
 %----------------------------------------------------------------------------------------
 %	AWARDS - ACHIEVEMENTS SECTION
 %----------------------------------------------------------------------------------------
 
-\section{AWARDS \\ ACHIEVEMENTS} 
+\section{AWARDS/ \\ ACHIEVEMENTS} 
 
 \begin{enumerate}
 \item Recipient of Doctoral grant for PhD studies.
-\item Recipient of University financial assistance award in Masters.
+\item Recipient of University financial assistance award in Masters based on academic ranking.
 \item Recipient of University scholarship in Bachelors, based on academic performance.
 \item Recipient of Ministry of Science and Technology scholarship for undergrad studies, awarded to top 250 students throughout Pakistan.
+\end{enumerate} 
+
+%----------------------------------------------------------------------------------------
+%	RESEARCH SOFTWARE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{RESEARCH \\ SOFTWARE} 
+\begin{enumerate}
+\item \textbf{\href{http://prime.scilifelab.se/mixtreem/}{MixTreEM}} -- MixTreEM is an MPI based parallel implementation of a novel species tree inference algorithm using mixture model. The software is writtten in C++ and Boost-MPI routines are used for making the code parallel.
+\item \textbf{\href{http://prime.scilifelab.se/}{PrIME}} -- PrIME is a C++ library with tools for phylogenetic inference. Computationally, the emphasis is on probabilistic models that typically employ a Markov Chain Monte Carlo (MCMC) based sampling.
+\item \textbf{\href{https://code.google.com/p/jprime/}{JPrIME}} -- JPrIME is the recent Java based implementation of PrIME with computational optimization of existing tools, and inclusion of additional tools for phylogenetics.
 \end{enumerate} 
 
 %----------------------------------------------------------------------------------------
@@ -169,17 +211,30 @@ Concentration: Computer Science
 %----------------------------------------------------------------------------------------
 
 \section{PUBLICATIONS} 
+\begin{itemize}
+\item Integrating Sequence Evolution into Probabilistic Orthology Analysis -- accepted in {\sl Systematic Biology} -- impact factor 11.53
+\item Species tree inference using a mixture model -- {\sl in Manuscript}
+\item IThresholdPicker: An interactive threshold picker for performance evaluation in ROC based analysis -- {\sl in Manuscript}
 
-Integrating Sequence Evolution into Probabilistic Orthology Analysis (under review in {\sl Systematic Biology} impact factor 11.53\\
-Species tree inference using a mixture model (in {\sl Manuscript})
+\end{itemize}
+
 
 %----------------------------------------------------------------------------------------
 %	PUBLICATIONS SECTION
 %----------------------------------------------------------------------------------------
 
 \section{REFERENCES} 
-Prof. Jens Lagergren \hfill \href{http://www.nada.kth.se/~jensl/}{http://www.nada.kth.se/$\sim$jensl/} \\
-Dr. Lars Arvestad \hfill \href{http://www.nada.kth.se/~arve/}{http://www.nada.kth.se/$\sim$arve/}
+\begin{itemize}
+\item Dr. Jens Lagergren \\
+Professor in computer science and computational biology \\
+KTH \& Scilifelab Stockholm \\
+\href{http://www.nada.kth.se/~jensl/}{http://www.nada.kth.se/$\sim$jensl/} 
+
+\item Dr. Lars Arvestad \\
+Senior lecturer in computational biology \\
+Stockholm University \& Scilifelab Stockholm \\
+\hfill \href{http://www.nada.kth.se/~arve/}{http://www.nada.kth.se/$\sim$arve/}
+\end{itemize}
 
 %----------------------------------------------------------------------------------------
 
