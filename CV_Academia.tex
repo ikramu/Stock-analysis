@@ -1,0 +1,256 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Graduate Curriculum Vitae
+% LaTeX Template
+% Version 1.1 (9/12/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Rensselaer Polytechnic Institute (http://www.rpi.edu/dept/arc/training/latex/resumes/)
+%
+% Important note:
+% This template requires the res.cls file to be in the same directory as the
+% .tex file. The res.cls file provides the resume style used for structuring the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[margin, 10pt]{res} % Use the res.cls style, the font size can be changed to 11pt or 12pt here
+
+\usepackage{helvet} % Default font is the helvetica postscript font
+%\usepackage{newcent} % To change the default font to the new century schoolbook postscript font uncomment this line and comment the one above
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={green!50!black},
+    citecolor={green!50!black},
+    urlcolor={blue!80!black}
+}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[T1]{fontenc}
+
+\setlength{\textwidth}{5.1in} % Text width of the document
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND ADDRESS SECTION
+%----------------------------------------------------------------------------------------
+
+\moveleft.5\hoffset\centerline{\huge\textbf{\textsc{Ikram Ullah}} } % Your name at the top
+ 
+\moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip % Horizontal line after name; adjust line thickness by changing the '1pt'
+ 
+\moveleft.5\hoffset\centerline{Studentbacken 21/1515 \hfill \href{mailto:ikramu@kth.se}{ikramu@kth.se}} % Your address
+\moveleft.5\hoffset\centerline{G\"ardet, 11557 \hfill \href{tel:+46739366175}{+46 73 936 6175}}%(073) 936-6175}
+\moveleft.5\hoffset\centerline{Stockholm \hfill \href{http://www.nada.kth.se/~ikramu/}{http://www.nada.kth.se/$\sim$ikramu/}}
+%\moveleft.5\hoffset\centerline{}
+%\moveleft.5\hoffset\centerline{}
+\moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip % Horizontal line after name; adjust line thickness by changing the '1pt'
+
+%----------------------------------------------------------------------------------------
+
+\begin{resume}
+
+%----------------------------------------------------------------------------------------
+%	OBJECTIVE SECTION
+%----------------------------------------------------------------------------------------
+ 
+\section{OBJECTIVE}  
+
+To model and implement market-based eco-friendly solutions for challenging problems in healthcare, utilizing sound mathematical principles, latest software and hardware technologies.
+
+%To model and implement mathematically inspired eco-friendly solutions for real world phenomena, with a focus on market-based solutions, using latest hardware and software.
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{EDUCATION}
+
+{\bf \color{Black}{Doctor of Philosophy},} Computer Science \\
+{\color{RubineRed}{Kungliga Tekniska H\"{o}gskolan, Sweden}} \hfill \textit{Jun 2010 -- Dec 2014} \\
+Concentration: Bioinformatics \\
+Minor: Comparative Genomics 
+
+%-----------------------------------------%
+{\bf \color{Black}{Exchange Student},} Computer Science \\
+{\color{RubineRed}{University of Limerick, Ireland}} \hfill \textit{Mar 2009 -- Aug 2009} \\
+Concentration: Software Engineering 
+
+%-----------------------------------------%
+{\bf \color{Black}{Master of Science,}} Computer Science (CGPA 3.47 out of 4.0) \\
+{\color{RubineRed}{Lahore University of Management Sciences (LUMS), Pakistan}} \hfill \textit{Sep 2006 -- Aug 2009} \\
+Concentration: Artificial Intelligence \\
+Minor: Software Engineering
+
+%-----------------------------------------%
+{\bf \color{Black}{Bachelor of Science,}} Computer Science (CGPA 3.8 out of 4.0) \\
+{\color{RubineRed}{University of Peshawar, Pakistan}} \hfill \textit{Jan 2002 -- Mar 2006} \\
+Concentration: Computer Science \\
+Minor: Mathematics
+
+%----------------------------------------------------------------------------------------
+%	RESEARCH SOFTWARE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{RESEARCH \\ SOFTWARE} 
+\begin{itemize}
+\item \textbf{\href{http://prime.scilifelab.se/}{PrIME}} -- PrIME is a C++ library with tools for phylogenetic inference. Computationally, the emphasis is on probabilistic models that typically employ a Markov Chain Monte Carlo (MCMC) based sampling.
+\item \textbf{\href{https://code.google.com/p/jprime/}{JPrIME}} -- JPrIME is the Java based implementation of PrIME with computational optimization of existing tools, and inclusion of additional tools for phylogenetic inference.
+\item \textbf{\href{http://prime.scilifelab.se/dlrsorthology/}{DLRSOrthology}} -- DLRSOrthology is a program for Bayesian probabilistic orthology analysis using an integrated gene evolution and sequence evolution model as outlined in the \href{http://www.pnas.org/content/106/14/5714.long}{DLRS} model. The implementation is in GNU C++ using Boost and PrIME libraries while the auxiliary scripts are written in R, Python and Perl.
+\item \textbf{\href{http://prime.scilifelab.se/mixtreem/}{MixTreEM}} -- MixTreEM is an MPI based parallel implementation of a novel species tree inference algorithm using mixture model. The software is writtten in C++ and Boost-MPI routines are used for making the code parallel.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%	COMPUTER SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{COMPUTER \\ SKILLS} 
+
+%{\sl \textbf{\color{Brown}{\textbf{Chief Data Scientist}}}}
+{\bf \color{Brown}{Languages:}} 
+C++, Java, C\#, R, Matlab \\
+{\bf \color{Brown}{Misc Tools:}} Bash, CMake, Python, Boost C++ libraries, OpenMPI \& Boost-MPI, MySQL, SQL Server, RapidMiner, Weka, Git, SVN, Netbeans, Eclipse, and different Bioinformatics tools. \\
+{\bf \color{Brown}{HPC Clusters:}} Developed software using 4 Swedish Unix clusters (\href{https://www.pdc.kth.se/resources/computers/ferlin}{Ferlin}, \href{https://www.nsc.liu.se/systems/triolith/}{Triolith}, \href{http://www.uppmax.uu.se/}{Tintin}, and \href{http://www.hpc2n.umu.se/resources/abisko}{Abisko}) \\
+{\bf \color{Brown}{Operating Systems:}} Unix, Windows and OS X.
+
+%----------------------------------------------------------------------------------------
+%	PROFESSIONAL EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+ 
+\section{PROFESSIONAL \\ EXPERIENCE}
+
+{\sl \textbf{\color{Brown}{\textbf{Chief Data Scientist}}}} \hfill \textit{April 2014 onward} \\
+{\color{RubineRed}{Greenely, Sweden}} \\
+\href{https://www.youtube.com/watch?v=COsyhfX7Pes}{Greenely} is a startup about eco-friendly intelligent energy management. The idea is to optimize household electricity consumption using machine learning based energy disaggregation algorithms and user behavior mining.
+\begin{itemize} 
+\item Implementing energy disaggregation algorithms
+\item Leading technical team
+\item Managing and optimizing the server-side of the software
+\item Tools used are R, PostgreSQL, Java and Go.
+\end{itemize} 
+
+{\sl \color{Brown}{\textbf{Analyst Software Engineer}}} \hfill \textit{Oct 2009 -- May 2010} \\
+{\href{http://www.satmapinc.com/}{\color{RubineRed}{SATMAP Inc, Machine Learning Team, Pakistan}}}  \\
+SATMAP is an enterprise call center application used for intelligent call routing used by Fortune 500 companies like AT\&T, Gieco, Time Warners Cables etc. I worked with a team of algorithm designers in:
+
+\begin{itemize} \itemsep -2pt % Reduce space between items
+\item Evaluating novel machine learning/data mining algorithms on call center data. 
+\item Implementing, testing, and integrating selected algorithms with SATMAP. 
+\item Tools used were combination of C++, SQL Server, R, and Rapidminer.
+\end{itemize}
+ 
+{\sl \textbf{\color{Brown}{\textbf{Research Assistant}}}} \hfill \textit{Dec 2007 -- Oct 2008} \\
+{\color{RubineRed}{Computer Science Department, LUMS, Pakistan}} 
+\begin{itemize} 
+\item Woking with XVCL: an open source library providing component based Document/View Architecture support for developers. Implementation was mainly in Java.
+\item Teaching assistant for Advanced Software Engineering course
+\end{itemize} 
+
+{\sl \textbf{\color{Brown}{\textbf{Consulting/Freelancing}}}} \hfill \textit{Mid-2008 onwards} \\
+{\color{RubineRed}{Odesk Corporation} \hfill \href{https://www.odesk.com/users/~013a228837c241737c}{Odesk profile link}} \\
+I started consulting at rentacoder.com (now acquired by freelancer.com) and then switched to odesk.com, offering consultancy mainly for machine learning projects. Some of these include: 
+
+\begin{itemize} \itemsep -2pt % Reduce space between items
+\item Stock value analysis and prediction using association rule mining (using R and Java)
+\item Quality based classification of barcode images using computer vision algorithms (using Matlab)
+\item Text classification using different machine learning algorithms (using Rapidminer and Java) 
+\end{itemize} 
+Details on any of above (and those not listed here) can be furnished on demand.
+
+{\sl \textbf{\color{Brown}{\textbf{Software Internee}}}} \hfill \textit{Summers 2007} \\
+{\color{RubineRed}{Five Rivers Technologies, Lahore}}
+\begin{itemize}
+\item Part of the group implementing a dual streaming/synchronization server for mobile devices using Funambol DS Server and video streaming APIs.
+\end{itemize} 
+
+
+%----------------------------------------------------------------------------------------
+%	Computer Vision SECTION
+%---------------------------------------------------------------------------------------- 
+%\section{COMPUTER VISION \\ EXPERIENCE}
+%{\sl \textbf{\color{Brown}{\textbf{Eye-based cursor movement}}}} \\
+%Using computer vision algorithms to track iris movement in the eye and map it to drive cursor movement on the screen. %The software was implemented in C++ using Intel OpenCV libraries.  \\
+%{\sl \textbf{\color{Brown}{\textbf{Classification of barcode images}}}} \\
+%Using different image denoising algorithms implemented in Image Processing toolbox in Matlab to classify images to %translatable and non-translatable classes. The solution was used as pre-step in a barcode reader application.  
+
+%----------------------------------------------------------------------------------------
+%	Team leading SECTION
+%---------------------------------------------------------------------------------------- 
+\section{TEAM-LEAD \\ EXPERIENCE}
+\begin{itemize}
+\item I have managed a small team of developers in Pakistan during my \href{https://www.odesk.com/users/~013a228837c241737c}{consultancy career}. Major responsibilities included task allocation, time allocation, and ensuring team collaboration.
+\item Recently, I am leading a group of KTH masters students in \href{https://www.youtube.com/watch?v=COsyhfX7Pes}{Greenely} project. Major responsibilities include task allocation, task synchronization, and team motivation.
+\end{itemize}
+%----------------------------------------------------------------------------------------
+%	Modeling SECTION
+%---------------------------------------------------------------------------------------- 
+
+%\section{COURSES}
+
+%Following are some of the courses I took at KTH during my PhD. 
+%\begin{itemize}
+%\item High performance computing
+%\item Advanced machine learning
+%\item Graph theory and algorithms
+%\item Elements of statistical learning
+%\item Scientific writing
+%\item Algorithmic bioinformatics
+%\item Quantitative system biology
+%\end{itemize} 
+
+
+%----------------------------------------------------------------------------------------
+%	AWARDS - ACHIEVEMENTS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{AWARDS/ \\ ACHIEVEMENTS} 
+
+\begin{enumerate}
+\item Recipient of Doctoral grant for PhD studies.
+\item Recipient of University financial assistance award in Masters based on academic ranking.
+\item Recipient of University scholarship in Bachelors, based on academic performance.
+\item Recipient of Ministry of Science and Technology scholarship for undergrad studies, awarded to top 250 students throughout Pakistan.
+\end{enumerate} 
+
+%----------------------------------------------------------------------------------------
+%	PUBLICATIONS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{PUBLICATIONS} 
+\begin{enumerate}
+\item Integrating Sequence Evolution into Probabilistic Orthology Analysis -- accepted in {\sl Systematic Biology} (Impact factor 11.53)
+\item Species tree inference using a mixture model -- {\sl Submitting to Molecular Biology and Evolution}
+\item IThresholdPicker: An interactive threshold picker for performance evaluation in ROC based analysis -- {\sl in Manuscript}
+\end{enumerate}
+
+
+%----------------------------------------------------------------------------------------
+%	PUBLICATIONS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{REFERENCES} 
+\begin{itemize}
+\item Dr. Jens Lagergren \\
+Professor in computer science and computational biology \\
+KTH \& Scilifelab Stockholm \\
+\href{http://www.nada.kth.se/~jensl/}{http://www.nada.kth.se/$\sim$jensl/} 
+
+\item Dr. Lars Arvestad \\
+Senior lecturer in computational biology \\
+Stockholm University \& Scilifelab Stockholm \\
+\hfill \href{http://www.nada.kth.se/~arve/}{http://www.nada.kth.se/$\sim$arve/}
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+
+\end{resume}
+\end{document}
+
