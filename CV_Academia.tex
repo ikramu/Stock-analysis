@@ -25,6 +25,7 @@
 \usepackage{helvet} % Default font is the helvetica postscript font
 %\usepackage{newcent} % To change the default font to the new century schoolbook postscript font uncomment this line and comment the one above
 
+\usepackage{verbatim}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
@@ -47,9 +48,9 @@
  
 \moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip % Horizontal line after name; adjust line thickness by changing the '1pt'
  
-\moveleft.5\hoffset\centerline{Studentbacken 21/1515 \hfill \href{mailto:ikramu@kth.se}{ikramu@kth.se}} % Your address
-\moveleft.5\hoffset\centerline{G\"ardet, 11557 \hfill \href{tel:+46739366175}{+46 73 936 6175}}%(073) 936-6175}
-\moveleft.5\hoffset\centerline{Stockholm \hfill \href{http://www.nada.kth.se/~ikramu/}{http://www.nada.kth.se/$\sim$ikramu/}}
+\moveleft.5\hoffset\centerline{S\"odergatan 2B, Lgh 1405 \hfill \href{mailto:ikramu@kth.se}{ikramu@kth.se}} % Your address
+\moveleft.5\hoffset\centerline{19534, M\"arsta \hfill \href{tel:+46739366175}{+46 73 936 6175}}%(073) 936-6175}
+\moveleft.5\hoffset\centerline{Sweden \hfill \href{https://www.linkedin.com/in/ikramu/}{Linkedin Profile}}
 %\moveleft.5\hoffset\centerline{}
 %\moveleft.5\hoffset\centerline{}
 \moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip % Horizontal line after name; adjust line thickness by changing the '1pt'
@@ -62,11 +63,15 @@
 %	OBJECTIVE SECTION
 %----------------------------------------------------------------------------------------
  
-\section{OBJECTIVE}  
+\section{SUMMARY}
+My current research interests includes tumor evolution patterns in metastatic breast cancer, intratumor heterogeneity and personalized cancer medicine. To investigate these phenomena, I mainly use next generation DNA- and RNA-sequencing data (and some array-based data wherever necessary). My PhD research was related to inferring evolutionary relationships in genes and species using phylogenetic methods.
+%Since 2009, I have been working with big data at modeling, implementation, and analysis level in various capacities. The data, I have analyzed, came from different sources including stock exchange, call center, electricity consumption, and genomics (mainly DNA- and RNA-sequencing data). I am well-versed in some of the existing open source data analysis tools and have a desire to learn new concepts and technologies.
+%\section{OBJECTIVE}  
 
-To model and implement market-based eco-friendly solutions for challenging problems in healthcare, utilizing sound mathematical principles, latest software and hardware technologies.
+%Using my machine learning and big data analytics' skills to extract relevant micro- and macro-level insights from multiple large-scale data sources 
+%Using my machine learning and big data analytics' skills to extract information from data, and then relevant insights from that information 
+%To model and implement market-based eco-friendly solutions for challenging problems utilizing sound mathematical principles, latest software and hardware technologies.
 
-%To model and implement mathematically inspired eco-friendly solutions for real world phenomena, with a focus on market-based solutions, using latest hardware and software.
 
 %----------------------------------------------------------------------------------------
 %	EDUCATION SECTION
@@ -75,102 +80,125 @@ To model and implement market-based eco-friendly solutions for challenging probl
 \section{EDUCATION}
 
 {\bf \color{Black}{Doctor of Philosophy},} Computer Science \\
-{\color{RubineRed}{Kungliga Tekniska H\"{o}gskolan, Sweden}} \hfill \textit{Jun 2010 -- Dec 2014} \\
-Concentration: Bioinformatics \\
-Minor: Comparative Genomics 
+{\color{RubineRed}{Kungliga Tekniska H\"{o}gskolan (KTH), Sweden}} \hfill \textit{Jun 2010 -- March 2015} \\
+Focus: Machine Learning \\
+Designing Bayesian generative models and implementing them using Markov chain Monte Carlo (MCMC) and Expectation Maximization (EM) techniques. I applied these methods to infer evolutionary relationships among genes and species using next-generation DNA-sequencing data % from related genes and species.
 
 %-----------------------------------------%
 {\bf \color{Black}{Exchange Student},} Computer Science \\
 {\color{RubineRed}{University of Limerick, Ireland}} \hfill \textit{Mar 2009 -- Aug 2009} \\
-Concentration: Software Engineering 
+Focus: Software Engineering 
 
 %-----------------------------------------%
-{\bf \color{Black}{Master of Science,}} Computer Science (CGPA 3.47 out of 4.0) \\
-{\color{RubineRed}{Lahore University of Management Sciences (LUMS), Pakistan}} \hfill \textit{Sep 2006 -- Aug 2009} \\
-Concentration: Artificial Intelligence \\
-Minor: Software Engineering
+{\bf \color{Black}{Master of Science,}} Computer Science \\ %(CGPA 3.47 out of 4.0) \\
+{\color{RubineRed}{Lahore University of Management Sciences, Pakistan}} \hfill \textit{Sep 2006 -- Dec 2008} \\
+Focus: Artificial Intelligence and Software Engineering \\
+%Minor: Software Engineering
 
 %-----------------------------------------%
-{\bf \color{Black}{Bachelor of Science,}} Computer Science (CGPA 3.8 out of 4.0) \\
+{\bf \color{Black}{Bachelor of Science,}} Computer Science \\ % (CGPA 3.8 out of 4.0) \\
 {\color{RubineRed}{University of Peshawar, Pakistan}} \hfill \textit{Jan 2002 -- Mar 2006} \\
-Concentration: Computer Science \\
-Minor: Mathematics
 
 %----------------------------------------------------------------------------------------
-%	RESEARCH SOFTWARE SECTION
+%	PROFESSIONAL EXPERIENCE SECTION 
 %----------------------------------------------------------------------------------------
 
-\section{RESEARCH \\ SOFTWARE} 
+\section{PROFESSIONAL \\ EXPERIENCE}
+
+{\sl \textbf{\color{Brown}{\textbf{Postdoctoral Researcher}}}} \hfill \textit{April 2015 onward} \\
+{\color{RubineRed}{Radiumhemmet, Karolinska University Hospital}} \\
+Main research topics during my postdoctoral tenure includes:
 \begin{itemize}
-\item \textbf{\href{http://prime.scilifelab.se/}{PrIME}} -- PrIME is a C++ library with tools for phylogenetic inference. Computationally, the emphasis is on probabilistic models that typically employ a Markov Chain Monte Carlo (MCMC) based sampling.
-\item \textbf{\href{https://code.google.com/p/jprime/}{JPrIME}} -- JPrIME is the Java based implementation of PrIME with computational optimization of existing tools, and inclusion of additional tools for phylogenetic inference.
-\item \textbf{\href{http://prime.scilifelab.se/dlrsorthology/}{DLRSOrthology}} -- DLRSOrthology is a program for Bayesian probabilistic orthology analysis using an integrated gene evolution and sequence evolution model as outlined in the \href{http://www.pnas.org/content/106/14/5714.long}{DLRS} model. The implementation is in GNU C++ using Boost and PrIME libraries while the auxiliary scripts are written in R, Python and Perl.
-\item \textbf{\href{http://prime.scilifelab.se/mixtreem/}{MixTreEM}} -- MixTreEM is an MPI based parallel implementation of a novel species tree inference algorithm using mixture model. The software is writtten in C++ and Boost-MPI routines are used for making the code parallel.
+\item \textbf{Tumor evolution patterns in metastatic breast cancer}: Using phylogenetic methods, we inferred the mode of tumor progression in metastatic breast cancer patients. In doing so, we showed first ever genomic evidence of minimal role of axillary lymph node metastasis in seeding distant organ metastasis. We also discerned the landscape of mutational signatures active during lifetime of breast cancer. The paper has been accepted in Journal of Clinical Investigation (JCI)
+\item \textbf{Quantifying intra-metastatic heterogeneity in breast cancer}: Using next generation DNA-sequencing data consisting of multiple blocks from the same metastasis, we quantified the extent of intra-metastatic heterogeneity and changing landscape of subclones in different regions of metastasis. We also show the presence of clinically actionable mutations present specifically in metastasis. Further, we showed that genomic instability continues even during late stages of the disease. We are now compiling the results and, based on their clinical value, will report them in high-impact journal.
+\item \textbf{Research collaborations}: I am collaborating with my team members and other research team (both within and outside Sweden) in basic and translational research in breast cancer. The projects are related to drug development, precision medicine and in-situ measurement of drug target engagement using CETSA technique.
 \end{itemize}
+
+%Using terabytes of DNA/RNA sequencing data from breast cancer patients to infer the route of cancer spread (metastasis) from primary tumor to other organs. 
+%\begin{itemize} 
+%\item Preprocessing of sequencing data to extract relevant cancer-specific variants like mutations and copy number aberrations
+%\item Using existing and implementing new statistical methods for forensic analysis of variants to infer evolutionary relationships
+%\item Visualization and reporting of results
+%\item Assisting team-members and collaborators in statistical analysis and visualization of their biomedical data 
+%\item Main tools used are R, Bash, Python and various bioinformatics softwares (in C++ and Java). 
+%\item Analysis is performed on super-computing clusters
+%\end{itemize} 
+
+{\sl \textbf{\color{Brown}{\textbf{Chief Data Scientist (part-time)}}}} \hfill \textit{April 2014 -- Jan 2015} \\
+{\color{RubineRed}{Greenely, Sweden}} \\
+\href{http://www.greenely.com}{Greenely} manages and optimizes household electricity consumption using user behavior mining and energy disaggregation algorithms. I was one of the early members of the team and was responsible for:
+\begin{itemize} 
+\item Research about open source smart meter data and energy disaggregation algorithms
+\item Visualization and reporting of electricity usage and related (e.g., weather) statistics for showing energy usage patterns
+\item Supervising master thesis students exploring various machine learning algorithms for energy disaggregation 
+\item Main tools used were R, Python and PostgreSQL
+\end{itemize} 
+
+{\sl \color{Brown}{\textbf{Analyst Software Engineer}}} \hfill \textit{Oct 2009 -- April 2010} \\
+{\href{http://www.satmapinc.com/}{\color{RubineRed}{Afiniti (formerly TRG SATMAP), Machine Learning Team, Pakistan}}}  \\
+SATMAP is an enterprise call center application used for intelligent call routing used by Fortune 500 companies like AT\&T, Gieco, Time Warners Cables etc. I was part of the machine learning team and my responsibilities included:
+
+\begin{itemize} \itemsep -2pt % Reduce space between items
+\item Evaluating different machine learning algorithms on call center data. 
+\item Implementing, testing, and integrating selected algorithms in SATMAP. 
+\item Evaluation was performed using Rapidminer and implementation/tuning of selected algorithms was done in R.
+\end{itemize}
+
+%{\sl \textbf{\color{Brown}{\textbf{Online Freelancing}}}} \hfill \textit{2008 -- 2013, part-time} \\
+%{\color{RubineRed}{Upwork (formerly Odesk)} } \\
+%I started consulting at rentacoder.com (now acquired by freelancer.com) and then switched to odesk.com, offering consultancy mainly for machine learning projects. Some of the projects are the following: 
+%\begin{itemize} \itemsep -2pt % Reduce space between items
+%\item Stock value analysis and prediction using association rule mining (in R and Java)
+%\item Quality-based classification of barcode images using computer vision algorithms (in Matlab)
+%\item Legal text classification using different classification algorithms implemented in \href{https://rapidminer.com/}{Rapidminer} 
+%\end{itemize} 
+
+ 
+{\sl \textbf{\color{Brown}{\textbf{Research Assistant}}}} \hfill \textit{Dec 2007 -- Oct 2008} \\
+{\color{RubineRed}{Computer Science Department, LUMS, Pakistan}} 
+\begin{itemize} 
+\item Woking with \href{http://www.sciencedirect.com/science/article/pii/S0167642304000978}{XVCL}: an Java-based open source software providing component based Document-View Architecture support for developers. 
+\end{itemize} 
+
+
+%----------------------------------------------------------------------------------------
+%	TEACHING SKILLS 
+%----------------------------------------------------------------------------------------
+
+\section{TEACHING \& PRESENTATION SKILLS}
+I have been regularly presenting my research to larger audience during my PhD and Postdoctoral career. Based on the feedback, I believe I have very good presentation skills. Some of my teaching experience is given below: \\
+
+{\bf \color{Brown}{Molecular Oncology and Biostatistics, 2017}} \\
+I co-taught the Bioinformatics part of the course with two other researchers. My duties included: 
+\begin{itemize} 
+\item Lecturing about introduction and analysis of genomics data 
+\item Conducting lab exercises in analysis of cancer data
+\end{itemize} 
+{\bf \color{Brown}{Advanced Software Engineering, 2008}} \\
+I was teaching assistant for the course, responsible for conducting lab exercises and marking assignments.
 
 %----------------------------------------------------------------------------------------
 %	COMPUTER SKILLS SECTION
 %----------------------------------------------------------------------------------------
 
-\section{COMPUTER \\ SKILLS} 
+\section{COMPUTING \\ SKILLS} 
 
 %{\sl \textbf{\color{Brown}{\textbf{Chief Data Scientist}}}}
 {\bf \color{Brown}{Languages:}} 
-C++, Java, C\#, R, Matlab \\
-{\bf \color{Brown}{Misc Tools:}} Bash, CMake, Python, Boost C++ libraries, OpenMPI \& Boost-MPI, MySQL, SQL Server, RapidMiner, Weka, Git, SVN, Netbeans, Eclipse, and different Bioinformatics tools. \\
-{\bf \color{Brown}{HPC Clusters:}} Developed software using 4 Swedish Unix clusters (\href{https://www.pdc.kth.se/resources/computers/ferlin}{Ferlin}, \href{https://www.nsc.liu.se/systems/triolith/}{Triolith}, \href{http://www.uppmax.uu.se/}{Tintin}, and \href{http://www.hpc2n.umu.se/resources/abisko}{Abisko}) \\
-{\bf \color{Brown}{Operating Systems:}} Unix, Windows and OS X.
+Mainly R, C++ and Java. Python and Matlab (when needed)\\
+{\bf \color{Brown}{Misc Tools:}} Bash, CMake, RapidMiner, Weka, Boost C++ libraries, OpenMPI \& Boost-MPI, MySQL, SQL Server, Git, SVN, Netbeans, Eclipse, and different Bioinformatics tools/pipelines. \\
+{\bf \color{Brown}{HPC Clusters:}} Using different Swedish Unix-based clusters, e.g., \href{https://www.pdc.kth.se/resources/computers/historical-computers/ferlin}{Ferlin}, \href{http://www.uppmax.uu.se/}{Tintin}, \href{https://www.nsc.liu.se/systems/triolith/}{Triolith}, and \href{http://www.hpc2n.umu.se/resources/abisko}{Abisko} for data-intensive simulations and analyses. Experience using Amazon cloud services like EC2 \\
+{\bf \color{Brown}{Operating Systems:}} (In order of preference) Unix, MacOS and Windows.
 
 %----------------------------------------------------------------------------------------
-%	PROFESSIONAL EXPERIENCE SECTION
+%	Team leading SECTION
+%---------------------------------------------------------------------------------------- 
+\section{BIG DATA SKILLS}
+{\bf \color{Brown}{Machine Learning Skills:}} 
+Probabilistic graphical models, Bayesian generative models and their implementation using Markov chain Monte Carlo methods, Mixture models and related inference using Expectation Maximization, Discriminative methods like SVM, Classification, Clustering, Association rules mining,   \\
+{\bf \color{Brown}{Statistical Theory:}} Statistical distributions and hypothesis theory, Statistical significance (confidence intervals, p and q-values), Parametric and non-parametric bootstrapping \\
+{\bf \color{Brown}{Statistical Visualization and reporting:}} Different types of visualizations mainly using R ggplot2 library, Using matplotlib (when needed)
 %----------------------------------------------------------------------------------------
- 
-\section{PROFESSIONAL \\ EXPERIENCE}
-
-{\sl \textbf{\color{Brown}{\textbf{Chief Data Scientist}}}} \hfill \textit{April 2014 onward} \\
-{\color{RubineRed}{Greenely, Sweden}} \\
-\href{https://www.youtube.com/watch?v=COsyhfX7Pes}{Greenely} is a startup about eco-friendly intelligent energy management. The idea is to optimize household electricity consumption using machine learning based energy disaggregation algorithms and user behavior mining.
-\begin{itemize} 
-\item Implementing energy disaggregation algorithms
-\item Leading technical team
-\item Managing and optimizing the server-side of the software
-\item Tools used are R, PostgreSQL, Java and Go.
-\end{itemize} 
-
-{\sl \color{Brown}{\textbf{Analyst Software Engineer}}} \hfill \textit{Oct 2009 -- May 2010} \\
-{\href{http://www.satmapinc.com/}{\color{RubineRed}{SATMAP Inc, Machine Learning Team, Pakistan}}}  \\
-SATMAP is an enterprise call center application used for intelligent call routing used by Fortune 500 companies like AT\&T, Gieco, Time Warners Cables etc. I worked with a team of algorithm designers in:
-
-\begin{itemize} \itemsep -2pt % Reduce space between items
-\item Evaluating novel machine learning/data mining algorithms on call center data. 
-\item Implementing, testing, and integrating selected algorithms with SATMAP. 
-\item Tools used were combination of C++, SQL Server, R, and Rapidminer.
-\end{itemize}
- 
-{\sl \textbf{\color{Brown}{\textbf{Research Assistant}}}} \hfill \textit{Dec 2007 -- Oct 2008} \\
-{\color{RubineRed}{Computer Science Department, LUMS, Pakistan}} 
-\begin{itemize} 
-\item Woking with XVCL: an open source library providing component based Document/View Architecture support for developers. Implementation was mainly in Java.
-\item Teaching assistant for Advanced Software Engineering course
-\end{itemize} 
-
-{\sl \textbf{\color{Brown}{\textbf{Consulting/Freelancing}}}} \hfill \textit{Mid-2008 onwards} \\
-{\color{RubineRed}{Odesk Corporation} \hfill \href{https://www.odesk.com/users/~013a228837c241737c}{Odesk profile link}} \\
-I started consulting at rentacoder.com (now acquired by freelancer.com) and then switched to odesk.com, offering consultancy mainly for machine learning projects. Some of these include: 
-
-\begin{itemize} \itemsep -2pt % Reduce space between items
-\item Stock value analysis and prediction using association rule mining (using R and Java)
-\item Quality based classification of barcode images using computer vision algorithms (using Matlab)
-\item Text classification using different machine learning algorithms (using Rapidminer and Java) 
-\end{itemize} 
-Details on any of above (and those not listed here) can be furnished on demand.
-
-{\sl \textbf{\color{Brown}{\textbf{Software Internee}}}} \hfill \textit{Summers 2007} \\
-{\color{RubineRed}{Five Rivers Technologies, Lahore}}
-\begin{itemize}
-\item Part of the group implementing a dual streaming/synchronization server for mobile devices using Funambol DS Server and video streaming APIs.
-\end{itemize} 
-
 
 %----------------------------------------------------------------------------------------
 %	Computer Vision SECTION
@@ -184,27 +212,39 @@ Details on any of above (and those not listed here) can be furnished on demand.
 %----------------------------------------------------------------------------------------
 %	Team leading SECTION
 %---------------------------------------------------------------------------------------- 
-\section{TEAM-LEAD \\ EXPERIENCE}
-\begin{itemize}
-\item I have managed a small team of developers in Pakistan during my \href{https://www.odesk.com/users/~013a228837c241737c}{consultancy career}. Major responsibilities included task allocation, time allocation, and ensuring team collaboration.
-\item Recently, I am leading a group of KTH masters students in \href{https://www.youtube.com/watch?v=COsyhfX7Pes}{Greenely} project. Major responsibilities include task allocation, task synchronization, and team motivation.
-\end{itemize}
+%\section{TEAM-LEAD \\ EXPERIENCE}
+%\begin{itemize}
+%\item I have managed a small team of developers in Pakistan during my \href{https://www.odesk.com/users/~013a228837c241737c}{consultancy career}. Major responsibilities included task allocation, time allocation, and ensuring team collaboration.
+%\item Recently, I am leading a group of KTH masters students in \href{https://www.youtube.com/watch?v=COsyhfX7Pes}{Greenely} project. Major responsibilities include task allocation, task synchronization, and team motivation.
+%\end{itemize}
 %----------------------------------------------------------------------------------------
 %	Modeling SECTION
 %---------------------------------------------------------------------------------------- 
 
 %\section{COURSES}
 
-%Following are some of the courses I took at KTH during my PhD. 
+%Some machine learning and big data-related courses that I took at graduate level at KTH are:
 %\begin{itemize}
 %\item High performance computing
 %\item Advanced machine learning
 %\item Graph theory and algorithms
 %\item Elements of statistical learning
-%\item Scientific writing
 %\item Algorithmic bioinformatics
-%\item Quantitative system biology
 %\end{itemize} 
+
+%----------------------------------------------------------------------------------------
+%	RESEARCH SOFTWARE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{SOFTWARES DEVELOPED} 
+Some of softwares that I developed, or co-developed, are given below.
+\begin{itemize}
+\item \textbf{Cancer evolution pipeline} -- A pipeline for inferring the life history of metastatic breast cancer using machine learning algorithms followed by its visualization using tree-visualization tools. Majority of the implementation is in R. Main algorithm is at my \href{https://bitbucket.org/ikramu/dolloparsimonyforcancerevolution}{Bitbucket page}. 
+\item \textbf{DLRSOrthology} -- DLRSOrthology is a program for Bayesian probabilistic orthology analysis using an integrated gene evolution and sequence evolution model as explained in the \href{https://doi.org/10.1093/sysbio/syv044}{paper}. The implementation is in GNU C++ using Boost and PrIME libraries while the auxiliary scripts are written in R, Python and Perl. DLRSOrthology is available \href{https://bitbucket.org/ikramu/dlrsorthology}{here}.
+\item \textbf{MixTreEM} -- It is implementation of MixTreEM: a species tree inference algorithm using mixture model as explained in the \href{https://doi.org/10.1093/molbev/msv115}{paper}. The software is writtten in C++ and Boost-MPI library is used for parallelizing the code. MixTreEM is available \href{https://bitbucket.org/ikramu/mixtreem}{here}.
+\item \textbf{PrIME} -- PrIME is a C++ library with tools for phylogenetic inference. Computationally, the emphasis is on probabilistic models that employ a Markov Chain Monte Carlo (MCMC) technique to draw samples from the posterior distribution. The library is available \href{http://prime.scilifelab.se/}{here}.
+\item \textbf{JPrIME} -- JPrIME is the Java-based implementation of PrIME with computational optimization of existing tools, and inclusion of additional tools for phylogenetic inference. The library is available \href{https://github.com/arvestad/jprime}{here}
+\end{itemize}
 
 
 %----------------------------------------------------------------------------------------
@@ -215,7 +255,7 @@ Details on any of above (and those not listed here) can be furnished on demand.
 
 \begin{enumerate}
 \item Recipient of Doctoral grant for PhD studies.
-\item Recipient of University financial assistance award in Masters based on academic ranking.
+\item Recipient of University financial assistance award in Masters on the basis of academic ranking.
 \item Recipient of University scholarship in Bachelors, based on academic performance.
 \item Recipient of Ministry of Science and Technology scholarship for undergrad studies, awarded to top 250 students throughout Pakistan.
 \end{enumerate} 
@@ -225,32 +265,29 @@ Details on any of above (and those not listed here) can be furnished on demand.
 %----------------------------------------------------------------------------------------
 
 \section{PUBLICATIONS} 
-\begin{enumerate}
-\item Integrating Sequence Evolution into Probabilistic Orthology Analysis -- accepted in {\sl Systematic Biology} (Impact factor 11.53)
-\item Species tree inference using a mixture model -- {\sl Submitting to Molecular Biology and Evolution}
-\item IThresholdPicker: An interactive threshold picker for performance evaluation in ROC based analysis -- {\sl in Manuscript}
-\end{enumerate}
+My previous publications are listed on my \href{https://scholar.google.com/citations?user=HjM0XDoAAAAJ&hl=en}{Google scholar page}. The following papers are accepted and will soon be published.
+\begingroup
+\renewcommand{\section}[2]{}%
+%\renewcommand{\chapter}[2]{}% for other classes
+\begin{thebibliography}{}
+\bibitem{ullah2017}
+    \textbf{Ikram Ullah}, Govindasamy-Muralidharan Karthik, Amjad Alkodsi, Una Kj\"allquist, Gustav St\aa lhammar, John L\"ovrot, Nelson-Fuentes Martinez, Jens Lagergren, Sampsa Hautaniemi, Johan Hartman, and Jonas Bergh. \textit{Evolutionary history of metastatic breast cancer reveals minimal seeding from axillary lymph-nodes} -- accepted in {\sl Journal of Clinical Investigation (JCI)} (impact factor 12.784)
+\bibitem{una2017}
+    Una Kj\"allquist, Rikard Erlandsson, Nicholas P Tobin, Amjad Alkodsi, \textbf{Ikram Ullah}, Gustav St\aa lhammar, Eva Karlsson, Thomas Hatschek, Johan Hartman, Sten Linnarsson, Jonas Bergh. \textit{Exome sequencing of primary breast cancers with paired metastatic lesions reveals metastasis-enriched mutations in the A-kinase anchoring protein family (AKAPs)} -- accepted in {\sl BMC Cancer} (impact factor 3.288)
+\bibitem{karthik2017}
+    Karthik Govindasamy Muralidharan, Mattias Rantalainen, Gustav St\aa lhammar, John L\"ovrot, \textbf{Ikram Ullah}, Amjad Alkodsi, Ran Ma, Lena Wedlund, Johan Lindberg, Jan Frisell, Jonas Bergh, Johan Hartman. \textit{Intra-tumor heterogeneity in breast cancer has limited impact on transcriptomic-based molecular profiling} -- accepted in {\sl BMC Cancer} (impact factor 3.288)
+\end{thebibliography}
+\endgroup
 
 
 %----------------------------------------------------------------------------------------
 %	PUBLICATIONS SECTION
 %----------------------------------------------------------------------------------------
 
-\section{REFERENCES} 
-\begin{itemize}
-\item Dr. Jens Lagergren \\
-Professor in computer science and computational biology \\
-KTH \& Scilifelab Stockholm \\
-\href{http://www.nada.kth.se/~jensl/}{http://www.nada.kth.se/$\sim$jensl/} 
+\section{RECOMMEND- \\-ATIONS AND \\ REFERENCES } 
+Recommendations may be found on my \href{https://www.linkedin.com/in/ikramu/}{Linkedin} and Upwork page. Some personal and professional references have been furnished in the designated section in my application.
 
-\item Dr. Lars Arvestad \\
-Senior lecturer in computational biology \\
-Stockholm University \& Scilifelab Stockholm \\
-\hfill \href{http://www.nada.kth.se/~arve/}{http://www.nada.kth.se/$\sim$arve/}
-\end{itemize}
-
-%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------
 
 \end{resume}
 \end{document}
-
