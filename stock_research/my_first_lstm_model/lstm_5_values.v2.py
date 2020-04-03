@@ -92,6 +92,7 @@ def plot_real_vs_pred(pred, real, outfile):
 def read_sel_data(stock_name, interval = '1m', datadir = 'data/'):
     colnames = ['Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
     filename = datadir + stock_name + '_' + interval + '.csv'
+    print(filename)
     data = pd.read_csv(filename)
     cols = list(data.columns)[1:] 
     if colnames == cols:
@@ -108,11 +109,11 @@ def read_sel_data(stock_name, interval = '1m', datadir = 'data/'):
     
     return data
 
-def get_full_data(stock_list, datadir = 'data/'):
+def get_full_data(stock_list, interval = '1m', datadir = 'data/'):
     data_dic = dict()
     for i in stock_list:
         print('reading data for ' + i)
-        data_dic[i] = read_sel_data(i, datadir)
+        data_dic[i] = read_sel_data(i, interval, datadir)
     
     merged_df = data_dic[stock_list[0]]
 
@@ -128,7 +129,7 @@ def arg_setting():
         parser.add_argument(
             '-s',
             '--stockname',
-            default='HM-B.SE',
+            default='HM-B.ST',
             help='Stock name (string), default=\"HM-B.SE\"'
         )
         parser.add_argument(
@@ -183,12 +184,15 @@ def arg_setting():
         return stock_name, pred_len, batch_size, timesteps, logfile, outplot, epochs
          
 def main():
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    print('Directory path is ' + dir_path)
     stock_name, pred_len, batch_size, time_steps, log_file, out_plot, epochs = arg_setting()
     
     datadir = 'data/'
+    interval = '1m'
     ind_list = list(['^OMXC20', '^OMXC25', '^OMXH25', '^OMXHPI', '^OMX'])
     comp_list = list([stock_name]) + ind_list
-    stock_data = get_full_data(comp_list, datadir)
+    stock_data = get_full_data(comp_list, interval, datadir)
     pred_col_id = 1
     
     # read data
