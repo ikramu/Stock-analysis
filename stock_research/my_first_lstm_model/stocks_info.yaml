@@ -1,0 +1,22 @@
+# This file contains all the stocks to be downloaded
+
+stocks:
+
+  - HM-B.ST
+  - SAND.ST
+  - ASSA-B.ST
+  - ABB.ST
+  - ATCO-B.ST
+  - ERIC-B.ST 
+  - ELUX-B.ST
+  - ICA.ST
+
+intervals:
+
+  - 1m
+  - 2m
+  - 5m
+  - 15m
+  - 30m 
+  - 60m
+  - 90m 
