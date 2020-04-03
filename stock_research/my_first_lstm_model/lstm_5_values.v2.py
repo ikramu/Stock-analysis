@@ -60,12 +60,12 @@ def trim_dataset(mat, batch_size):
     else:
         return mat
 
-def build_lstm_model(train_data, BATCH_SIZE, TIME_STEPS):  
+def build_lstm_model(train_data, pred_len, BATCH_SIZE, TIME_STEPS):  
     model = Sequential()
     model.add(LSTM(90, batch_input_shape=(BATCH_SIZE, TIME_STEPS, train_data.shape[2]), dropout=0.0, recurrent_dropout=0.0, stateful=True, kernel_initializer='random_uniform'))
     model.add(Dropout(0.5))
     model.add(Dense(20,activation='relu'))
-    model.add(Dense(5,activation='sigmoid'))
+    model.add(Dense(pred_len,activation='sigmoid'))
     optimizer = optimizers.RMSprop(lr=0.001)
     model.compile(loss='mean_squared_error', optimizer=optimizer)
     return model
@@ -135,8 +135,8 @@ def arg_setting():
         parser.add_argument(
             '-n',
             '--predlen',
-            default='5',
-            help='Number of steps to predict (int), default=5'
+            default='10',
+            help='Number of steps to predict (int), default=10'
         )
         parser.add_argument(
             '-b',
@@ -188,10 +188,14 @@ def main():
     print('Directory path is ' + dir_path)
     stock_name, pred_len, batch_size, time_steps, log_file, out_plot, epochs = arg_setting()
     
-    datadir = 'data/'
+    stock_name = ['HM-B.ST', 'ERIC-B.ST', 'ICA.ST', 'ELUX-B.ST']
+    ind_list = list(['^OMX', '^OMXH25', '^OMXHPI'])
+    comp_list = list(stock_name) + ind_list
+    datadir = '/Users/eullikr/onlineAccounts/github/private/stock_research/my_first_lstm_model/data/'
     interval = '1m'
-    ind_list = list(['^OMXC20', '^OMXC25', '^OMXH25', '^OMXHPI', '^OMX'])
-    comp_list = list([stock_name]) + ind_list
+    #ind_list = list(['^OMXC20', '^OMXC25', '^OMXH25', '^OMXHPI', '^OMX'])
+    #comp_list = list([stock_name]) + ind_list
+    print(comp_list)
     stock_data = get_full_data(comp_list, interval, datadir)
     pred_col_id = 1
     
@@ -215,7 +219,7 @@ def main():
 
     # build and run the LSTM model
     csv_logger = CSVLogger(os.path.join(log_file), append=True)
-    lstm_model = build_lstm_model(x_t, batch_size, time_steps)
+    lstm_model = build_lstm_model(x_t, pred_len, batch_size, time_steps)
     history = lstm_model.fit(x_t, y_t, epochs=epochs, verbose=2, batch_size=batch_size,
                         shuffle=False, validation_data=(trim_dataset(x_val, batch_size),
                         trim_dataset(y_val, batch_size)), callbacks=[csv_logger])

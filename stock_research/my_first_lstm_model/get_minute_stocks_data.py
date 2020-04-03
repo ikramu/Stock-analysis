@@ -71,12 +71,12 @@ def main():
 
 if __name__ == '__main__':
     #main()
-    with open(r'exchange_info.yaml') as file:
+    with open(r'temporary.yaml') as file:
         documents = yaml.full_load(file)
         for stock_name in documents['stocks']:
             for interval in documents['intervals']:
                 print('Downloading data for ' + stock_name + ' for interval of ' + interval)
-                outfile = 'new_data/'+stock_name+'_'+interval+'.csv'
+                outfile = 'data/'+stock_name+'_'+interval+'.csv'
                 download_max_stock_data(stock_name, interval, outfile)
 
         #for item, doc in documents.items():
