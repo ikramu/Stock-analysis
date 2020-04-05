@@ -282,9 +282,6 @@ def main():
     x_ts = trim_dataset(x_ts, batch_size)
     y_ts = trim_dataset(y_ts, batch_size)
 
-    #x_val, x_test_t = np.split(trim_dataset(x_temp, batch_size),2)
-    #y_val, y_test_t = np.split(trim_dataset(y_temp, batch_size),2)
-
     # build and run the LSTM model
     csv_logger = CSVLogger(os.path.join(log_file), append=True)
     print('Defining model...')
