@@ -2,7 +2,13 @@
 
 stocks:
 
-  - ^OSEBX.OL
+  - OSEBX.OL
+  - ^OMX
+  - ^OMXC25
+  - ^OMXH25
+  - ^OMXHPI
+  - ^OMXSPI
+  - ^OMXC20 
   - ^DJI
   - ^IXIC
   - ^GDAXI
@@ -10,20 +16,14 @@ stocks:
   - ^HSI
   - ^GSPC
   - ^FTSE
-  - ^OMX
-  - ^OMXC25
-  - ^OMXH25
-  - ^OMXHPI
-  - ^OMXSPI
-  - ^OMXC20 
-
+  
   
 intervals:
 
   - 1m
-  - 2m
-  - 5m
-  - 15m
-  - 30m 
-  - 60m
-  - 90m 
+ # - 2m
+ # - 5m
+ # - 15m
+ # - 30m 
+ # - 60m
+ # - 90m 

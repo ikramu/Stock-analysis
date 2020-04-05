@@ -1,4 +1,5 @@
 import sys
+import os 
 import argparse
 import numpy as np
 import pandas as pd 
@@ -12,7 +13,6 @@ def get_stock_data(stock_name, start_date, end_date, interval):
     return data
 
 def download_max_stock_data(stock_name, interval, outfile, end_date = datetime.now()):
-    ultimate_end_date = end_date
     print('We will save the output to ', outfile)
     bigdf = pd.DataFrame()
     first_time = True
@@ -27,12 +27,20 @@ def download_max_stock_data(stock_name, interval, outfile, end_date = datetime.n
         bigdf = pd.concat([bigdf, df]) 
         print('No of rows between ' + str(start_date) + ' and ' + str(end_date) + ' are ' + str(df.shape))
         end_date = start_date
-        if first_time:
-            df.to_csv(outfile, mode='a', header=True)
-            first_time = False
-        else:
-            df.to_csv(outfile, mode='a', header=False)
+        #if first_time:
+        #    df.to_csv(outfile, mode='a', header=True)
+        #    first_time = False
+        #else:
+        #    df["Datetime"] = pd.to_datetime(df["Datetime"])
+        #    df = df.sort_values('Datetime')
+        #    df = df.reset_index(drop=True)
+        #    df.to_csv(outfile, mode='a', header=False)
         sleep(2)
+    bigdf = bigdf.sort_index(ascending=True)
+    bigdf['Datetime'] = bigdf.index 
+    bigdf = bigdf.reset_index(drop=True)
+    bigdf = bigdf[['Datetime','Open','High','Low','Close','Adj Close','Volume']]
+    bigdf.to_csv(outfile, header=True, index=False)
 
 def arg_setting():
         now=datetime.now().strftime('%Y-%m-%d_%H-%M-%S')   
@@ -66,17 +74,19 @@ def arg_setting():
 
 def main():
     stock_name, interval, outfile = arg_setting()
-    download_max_stock_data(stock_name, interval, outfile)
+    end_date = datetime.now()
+    download_max_stock_data(stock_name, interval, outfile, end_date)
 
 
 if __name__ == '__main__':
-    #main()
-    with open(r'temporary.yaml') as file:
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    print('Directory path is ' + dir_path)
+    with open(dir_path+'/exchange_info.yaml') as file:
         documents = yaml.full_load(file)
         for stock_name in documents['stocks']:
             for interval in documents['intervals']:
                 print('Downloading data for ' + stock_name + ' for interval of ' + interval)
-                outfile = 'data/'+stock_name+'_'+interval+'.csv'
+                outfile = dir_path+'/data/'+stock_name+'_'+interval+'.csv'
                 download_max_stock_data(stock_name, interval, outfile)
 
         #for item, doc in documents.items():
