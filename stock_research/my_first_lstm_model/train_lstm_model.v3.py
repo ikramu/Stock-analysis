@@ -23,9 +23,6 @@ from tqdm import tqdm_notebook
 
 def normalize_with_val_data(train, valid, test):
     train_cols = train.columns[1:]
-    #df_train, df_test = train_test_split(minutedata, train_size=0.75, test_size=0.25, shuffle=False)
-    #df_test, df_valid = train_test_split(df_test, train_size=0.7, test_size=0.3, shuffle=False)
-    #print("Train and Test size are: ", len(df_train), " and ", len(df_test))
     
     # scale the feature MinMax, build array
     x = train.loc[:,train_cols].values
@@ -62,7 +59,7 @@ def build_timeseries(mat, num_steps, y_col_index, TIME_STEPS):
     for i in tqdm_notebook(range(dim_0-num_steps)):
         x[i] = mat[i:TIME_STEPS+i]
         y[i] = mat[TIME_STEPS+i:TIME_STEPS+i+num_steps, y_col_index].reshape(num_steps,)
-    print("length of time-series i/o",x.shape,y.shape)
+    #print("length of time-series i/o",x.shape,y.shape)
     return x, y
 
 def trim_dataset(mat, batch_size):
@@ -106,21 +103,23 @@ def plot_real_vs_pred(pred, real, error, outfile):
 
 def plot_accuracy_loss(history, outfile_pref):
     # plot accuracy
-    plt.plot(history.history['acc'])
-    plt.plot(history.history['val_acc'])
-    plt.title('Model accuracy')
-    plt.ylabel('Accuracy')
-    plt.xlabel('Epoch')
-    plt.legend(['Training', 'Validation'], loc='upper left')
-    plt.show()
+    #plt.plot(history.history['acc'])
+    #plt.plot(history.history['val_acc'])
+    #plt.title('Model accuracy')
+    #plt.ylabel('Accuracy')
+    #plt.xlabel('Epoch')
+    #plt.legend(['Training', 'Validation'], loc='upper left')
+    #plt.savefig(outfile_pref+'_accuracy.png')
+    #plt.show()
 
     # plot loss
     plt.plot(history.history['loss'])
     plt.plot(history.history['val_loss'])
-    plt.title('Model loss')
+    plt.title('Model training loss')
     plt.ylabel('Loss')
     plt.xlabel('Epoch')
     plt.legend(['Training', 'Validation'], loc='upper left')
+    plt.savefig(outfile_pref+'_training_loss.png')
     plt.show()
 
 
@@ -160,7 +159,7 @@ def get_full_data(stock_list, interval = '1m', datadir = 'data/'):
 
 def arg_setting(now):
         #now=datetime.now().strftime('%Y-%m-%d_%H-%M-%S')   
-        outfigfile = 'figures/' + now + '_model_performance.png'
+        dir_path = os.path.dirname(os.path.realpath(__file__))
         parser = argparse.ArgumentParser(description='LSTM model to predict next 5 min stock prices')
         parser.add_argument(
             '-s',
@@ -191,13 +190,13 @@ def arg_setting(now):
         parser.add_argument(
             '-l',
             '--logfile',
-            default='log/'+now+'_model.log',
+            default=os.path.join(dir_path,'log',now+'_model.log'),
             help='Output file for storing logs (string), default=\"log/timestampped_lstm_model.log\"'
         )
         parser.add_argument(
             '-o',
             '--outplot',
-            default='figures/' + now + '_model_performance.png',
+            default=os.path.join(dir_path,'figures', now + '_model_performance.png'),
             help='Output file for storing logs (string), default=\"log/timestampped_lstm_perf.png\"'
         )
         parser.add_argument(
@@ -234,7 +233,10 @@ def main():
     now=datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     dir_path = os.path.dirname(os.path.realpath(__file__))
     print('Directory path is ' + dir_path)
-    program_dir = '/Users/eullikr/onlineAccounts/github/private/stock_research/my_first_lstm_model/'
+    #program_dir = '/Users/eullikr/onlineAccounts/github/private/stock_research/my_first_lstm_model/'
+    snapshot_dir = os.path.join(dir_path,'model_runs',now)
+    print(snapshot_dir)
+    os.mkdir(snapshot_dir)
     stock_name, pred_len, batch_size, time_steps, log_file, out_plot, epochs = arg_setting(now)
 
     print('################################')
@@ -244,7 +246,7 @@ def main():
     #stock_name = ['HM-B.ST']#, 'ERIC-B.ST', 'ICA.ST', 'ELUX-B.ST']
     #ind_list = list(['^OMX', '^OMXH25', '^OMXHPI'])
     #comp_list = list(stock_name) + ind_list
-    datadir = program_dir + 'data/'
+    datadir = os.path.join(dir_path, 'data/')
     interval = '1m'
 
     ind_list = list(['^OMXC20', '^OMXC25', '^OMXH25', '^OMXHPI', '^OMX'])
@@ -256,7 +258,7 @@ def main():
     # train, test, valid data
     train, valid, test = split_train_val_test(stock_data, time_steps, pred_len)
     
-    model_file = program_dir + 'models/'+now+'_TS_'+str(time_steps)+'_BS_'+str(batch_size)+'.model'
+    model_file = dir_path + 'models/'+now+'_TS_'+str(time_steps)+'_BS_'+str(batch_size)+'.model'
     # read data
     # stock_data = pd.read_csv(input_file)
 
@@ -264,6 +266,9 @@ def main():
     # normalize the stock data
     #x_train, x_test, min_max_scaler = normalize_data(stock_data)
     x_train, x_valid, x_test, min_max_scaler = normalize_with_val_data(train, valid, test)
+    np.save(os.path.join(snapshot_dir,"x_train.csv"), x_train)
+    np.save(os.path.join(snapshot_dir,"x_test.csv"), x_test)
+    np.save(os.path.join(snapshot_dir,"x_valid.csv"), x_valid)
 
     ### Training data
     # build time-series
@@ -271,16 +276,22 @@ def main():
     # trim extra rows from training data
     x_t = trim_dataset(x_t, batch_size)
     y_t = trim_dataset(y_t, batch_size)
+    np.save(os.path.join(snapshot_dir,"x_t.csv"), x_t)
+    np.save(os.path.join(snapshot_dir,"y_t.csv"), y_t)
 
     ### Validation data
     x_v, y_v = build_timeseries(x_valid, pred_len, pred_col_id, time_steps)
     x_v = trim_dataset(x_v, batch_size)
     y_v = trim_dataset(y_v, batch_size)
+    np.save(os.path.join(snapshot_dir,"x_v.csv"), x_v)
+    np.save(os.path.join(snapshot_dir,"y_v.csv"), y_v)
 
     ### Test data
     x_ts, y_ts = build_timeseries(x_test, pred_len, pred_col_id, time_steps)
     x_ts = trim_dataset(x_ts, batch_size)
     y_ts = trim_dataset(y_ts, batch_size)
+    np.save(os.path.join(snapshot_dir,"x_ts.csv"), x_ts)
+    np.save(os.path.join(snapshot_dir,"y_ts.csv"), y_ts)
 
     # build and run the LSTM model
     csv_logger = CSVLogger(os.path.join(log_file), append=True)
@@ -309,7 +320,7 @@ def main():
     np.savetxt('/tmp/y_test_t_org.txt', y_test_t_org, delimiter = ',')
 
     # plot loss and accuracy for model
-    #plot_accuracy_loss(history)
+    plot_accuracy_loss(history, os.path.join(dir_path,'figures',now))
 
     # plot the predicted vs real values
     print('Plotting prediction vs real values...')
@@ -318,7 +329,7 @@ def main():
 
     # write model to file 
     model_file = now+'_TS_'+str(time_steps)+'_BS_'+str(batch_size)+'_Error_'+str(round(error,5))+'.model'
-    full_model_path = program_dir + 'models/' + model_file
+    full_model_path = dir_path + 'models/' + model_file
     print('Writing model to ' + full_model_path + '...')
     lstm_model.save(full_model_path)
 
