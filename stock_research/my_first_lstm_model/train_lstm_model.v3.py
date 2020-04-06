@@ -75,9 +75,12 @@ def trim_dataset(mat, batch_size):
 
 def build_lstm_model(train_data, pred_len, BATCH_SIZE, TIME_STEPS):  
     model = Sequential()
-    model.add(LSTM(90, batch_input_shape=(BATCH_SIZE, TIME_STEPS, train_data.shape[2]), dropout=0.0, recurrent_dropout=0.0, stateful=True, kernel_initializer='random_uniform'))
+    model.add(LSTM(100, batch_input_shape=(BATCH_SIZE, TIME_STEPS, 
+    train_data.shape[2]), dropout=0.0, recurrent_dropout=0.0, 
+    stateful=True, kernel_initializer='random_uniform'))
     model.add(Dropout(0.5))
-    model.add(Dense(20,activation='relu'))
+    #model.add(Dense(30,activation='relu'))
+    model.add(Dense(25,activation='relu'))
     model.add(Dense(pred_len,activation='sigmoid'))
     optimizer = optimizers.RMSprop(lr=0.001)
     model.compile(loss='mean_squared_error', optimizer=optimizer)
@@ -245,14 +248,17 @@ def main():
     print('################################')
 
     #stock_name = ['HM-B.ST']#, 'ERIC-B.ST', 'ICA.ST', 'ELUX-B.ST']
-    #ind_list = list(['^OMX', '^OMXH25', '^OMXHPI'])
+    #ind_list = list(['HM-B.ST', 'ICA.ST', 'ELUX-B.ST', '^OMX', '^OMXH25'])
     #comp_list = list(stock_name) + ind_list
     datadir = os.path.join(dir_path, 'data/')
     interval = '1m'
 
     ind_list = list(['^OMXC20', '^OMXC25', '^OMXH25', '^OMXHPI', '^OMX'])
     comp_list = list([stock_name]) + ind_list
+    print('################################################################')
+    print('Complete list of stocks are:')
     print(comp_list)
+    print('################################################################')
     stock_data = get_full_data(comp_list, interval, datadir)
     np.save(os.path.join(snapshot_dir, "stock_data"), stock_data.values)
     pred_col_id = 0
@@ -268,6 +274,9 @@ def main():
     # normalize the stock data
     #x_train, x_test, min_max_scaler = normalize_data(stock_data)
     x_train, x_valid, x_test, min_max_scaler = normalize_with_val_data(train, valid, test)
+    train.to_pickle(os.path.join(snapshot_dir,"df.train.pkl"))
+    valid.to_pickle(os.path.join(snapshot_dir,"df.valid.pkl"))
+    test.to_pickle(os.path.join(snapshot_dir,"df.test.pkl"))
     np.save(os.path.join(snapshot_dir,"x_train"), x_train)
     np.save(os.path.join(snapshot_dir,"x_test"), x_test)
     np.save(os.path.join(snapshot_dir,"x_valid"), x_valid)
