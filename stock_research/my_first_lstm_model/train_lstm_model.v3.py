@@ -8,6 +8,7 @@ import yfinance as yf
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
+from sklearn.externals import joblib
 
 import tensorflow as tf
 from keras.models import Sequential
@@ -120,7 +121,7 @@ def plot_accuracy_loss(history, outfile_pref):
     plt.xlabel('Epoch')
     plt.legend(['Training', 'Validation'], loc='upper left')
     plt.savefig(outfile_pref+'_training_loss.png')
-    plt.show()
+    #plt.show()
 
 
 def read_sel_data(stock_name, interval = '1m', datadir = 'data/'):
@@ -253,6 +254,7 @@ def main():
     comp_list = list([stock_name]) + ind_list
     print(comp_list)
     stock_data = get_full_data(comp_list, interval, datadir)
+    np.save(os.path.join(snapshot_dir, "stock_data"), stock_data.values)
     pred_col_id = 0
 
     # train, test, valid data
@@ -266,9 +268,10 @@ def main():
     # normalize the stock data
     #x_train, x_test, min_max_scaler = normalize_data(stock_data)
     x_train, x_valid, x_test, min_max_scaler = normalize_with_val_data(train, valid, test)
-    np.save(os.path.join(snapshot_dir,"x_train.csv"), x_train)
-    np.save(os.path.join(snapshot_dir,"x_test.csv"), x_test)
-    np.save(os.path.join(snapshot_dir,"x_valid.csv"), x_valid)
+    np.save(os.path.join(snapshot_dir,"x_train"), x_train)
+    np.save(os.path.join(snapshot_dir,"x_test"), x_test)
+    np.save(os.path.join(snapshot_dir,"x_valid"), x_valid)
+    joblib.dump(min_max_scaler, os.path.join(snapshot_dir,"min_max_scaler.pkl"))
 
     ### Training data
     # build time-series
@@ -276,22 +279,22 @@ def main():
     # trim extra rows from training data
     x_t = trim_dataset(x_t, batch_size)
     y_t = trim_dataset(y_t, batch_size)
-    np.save(os.path.join(snapshot_dir,"x_t.csv"), x_t)
-    np.save(os.path.join(snapshot_dir,"y_t.csv"), y_t)
+    np.save(os.path.join(snapshot_dir,"x_t"), x_t)
+    np.save(os.path.join(snapshot_dir,"y_t"), y_t)
 
     ### Validation data
     x_v, y_v = build_timeseries(x_valid, pred_len, pred_col_id, time_steps)
     x_v = trim_dataset(x_v, batch_size)
     y_v = trim_dataset(y_v, batch_size)
-    np.save(os.path.join(snapshot_dir,"x_v.csv"), x_v)
-    np.save(os.path.join(snapshot_dir,"y_v.csv"), y_v)
+    np.save(os.path.join(snapshot_dir,"x_v"), x_v)
+    np.save(os.path.join(snapshot_dir,"y_v"), y_v)
 
     ### Test data
     x_ts, y_ts = build_timeseries(x_test, pred_len, pred_col_id, time_steps)
     x_ts = trim_dataset(x_ts, batch_size)
     y_ts = trim_dataset(y_ts, batch_size)
-    np.save(os.path.join(snapshot_dir,"x_ts.csv"), x_ts)
-    np.save(os.path.join(snapshot_dir,"y_ts.csv"), y_ts)
+    np.save(os.path.join(snapshot_dir,"x_ts"), x_ts)
+    np.save(os.path.join(snapshot_dir,"y_ts"), y_ts)
 
     # build and run the LSTM model
     csv_logger = CSVLogger(os.path.join(log_file), append=True)
@@ -316,8 +319,8 @@ def main():
     y_pred_org = (y_pred_mean * min_max_scaler.data_range_[pred_col_id]) + min_max_scaler.data_min_[pred_col_id] 
     y_test_t_org = (y_test_t_mean * min_max_scaler.data_range_[pred_col_id]) + min_max_scaler.data_min_[pred_col_id]
 
-    np.savetxt('/tmp/y_pred_org.txt', y_pred_org, delimiter = ',')
-    np.savetxt('/tmp/y_test_t_org.txt', y_test_t_org, delimiter = ',')
+    np.savetxt('/tmp/y_pred_org', y_pred_org, delimiter = ',')
+    np.savetxt('/tmp/y_test_t_org', y_test_t_org, delimiter = ',')
 
     # plot loss and accuracy for model
     plot_accuracy_loss(history, os.path.join(dir_path,'figures',now))
@@ -329,7 +332,7 @@ def main():
 
     # write model to file 
     model_file = now+'_TS_'+str(time_steps)+'_BS_'+str(batch_size)+'_Error_'+str(round(error,5))+'.model'
-    full_model_path = dir_path + 'models/' + model_file
+    full_model_path = os.path.join(dir_path, 'models', model_file)
     print('Writing model to ' + full_model_path + '...')
     lstm_model.save(full_model_path)
 
