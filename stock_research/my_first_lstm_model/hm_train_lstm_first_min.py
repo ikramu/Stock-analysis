@@ -1,3 +1,9 @@
+##############################################
+### This model is training on HM-B.ST data ###
+#######  Use the following parameters  #######
+### python3 hm_train_lstm_first_min.py -s HM-B.ST -n 5 -b 100 -t 60 -e 100 ###
+##############################################
+
 import numpy as np
 import pandas as pd
 from datetime import datetime
