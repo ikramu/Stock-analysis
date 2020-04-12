@@ -13,8 +13,8 @@ Try the HM model using following command
 
 where
 
-1. -s stock name (here HM-B.ST). For companies abbreviations, visit Yahoo Finance. Note that script assumes that data for the stock is availabe in `data` directory
-2. -n how many steps to predict (here only the next minute)
-3. -b batch size, i.e., to be used in model training)
-4. -t time-steps, i.e., how many minutes of previous data will considered for prediction (here last 60 min)
-5. -e No. of epochs for trainining the model
+1. `-s` stock name (here HM-B.ST). For companies abbreviations, visit Yahoo Finance. Note that script assumes that data for the stock is availabe in `data` directory
+2. `-n` how many steps to predict (here only the next minute)
+3. `-b` batch size, i.e., to be used in model training)
+4. `-t` time-steps, i.e., how many minutes of previous data will considered for prediction (here last 60 min)
+5. `-e` No. of epochs for trainining the model
