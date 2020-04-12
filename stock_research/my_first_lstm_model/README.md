@@ -4,4 +4,9 @@ This mini-project contains the code for predicting stock prices using LSTM. The 
 ## Usage
 
 First install the required libraries as follows.
+
 `pip install -r requirements.txt `
+
+Try the HM model using following command
+
+`python3 hm_train_lstm_first_min.py -s HM-B.ST -n 1 -b 100 -t 60 -e 100`
