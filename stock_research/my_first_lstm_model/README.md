@@ -1,0 +1,2 @@
+# Stock price prediction using LSTM
+This mini-project contains the code for predicting stock prices using LSTM. The code expects minute-level data and can be customized to predict next $n$ values. Keep in mind that the model performance is considerably poor for larger $n$. I have used it on $n = {1-5}$.
