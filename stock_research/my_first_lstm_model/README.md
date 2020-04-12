@@ -1,7 +1,7 @@
 # Stock price prediction using LSTM
 This mini-project contains the code for predicting stock prices using LSTM. The code expects minute-level data and can be customized to predict next `n` minutes. Keep in mind that the model performance is considerably poor for larger `n`. I have used it on `n` between 1 and 5 minutes.
 
-The following figure shows model performance for next minute on HM data between 9th March 2020 till 3rd April 2020
+The following figure shows model performance for next minute prediction `p=0` on HM data between 9th March 2020 till 3rd April 2020
 ![Model performance on HM data](docs/figures/HM-B.ST_TS_60_BS_100_Error_9e-05.png)
 
 ## Usage
