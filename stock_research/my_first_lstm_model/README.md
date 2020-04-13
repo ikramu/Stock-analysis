@@ -10,7 +10,7 @@ First install the required libraries as follows.
 
 `pip install -r requirements.txt `
 
-Try the HM model using following command
+Try the H\&M model using following command
 
 `python3 hm_train_lstm_generic.py -p 0 -s HM-B.ST -n 1 -b 100 -t 60 -e 120`
 
