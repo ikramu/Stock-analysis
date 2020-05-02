@@ -1,0 +1,8 @@
+dbHost: localhost
+dbName: yfinance
+dbUser: ikramu
+dbPasswd: Lums1234
+tableName: 
+  crypto: crypto
+  us: us
+  se: MinuteStockData

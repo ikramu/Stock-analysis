@@ -1,0 +1,39 @@
+# This file contains all the stocks to be downloaded
+
+us:
+  - ^GSPC
+  - ^IXIC
+  - MSFT
+  - AAPL
+  - GOOG
+  - ORCL
+  - FB
+  - ^DJI
+
+
+
+crypto:
+  - BTC-USD
+  - ETH-USD
+  - XRP-USD
+  - USDT-USD
+  - BCH-USD
+  - LTC-USD
+  - BNB-USD
+
+se:
+
+  - HM-B.ST
+  - SAND.ST      
+  - ASSA-B.ST    
+  - ABB.ST       
+  - ATCO-B.ST
+  - ERIC-B.ST
+  - ELUX-B.ST
+  - ICA.ST       
+  - OSEBX.OL
+  - ^OMXC20    
+  - ^OMXC25    
+  - ^GDAXI
+  - ^OMXS30  
+

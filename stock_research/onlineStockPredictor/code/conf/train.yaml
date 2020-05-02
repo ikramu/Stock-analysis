@@ -1,0 +1,24 @@
+
+BTC-USD:
+  - BCH-USD 
+  - BNB-USD
+  - ETH-USD
+  - LTC-USD
+  - USDT-USD
+  - XRP-USD
+
+HM-B.ST:
+  - ICA.ST
+  - ELUX-B.ST
+  - ERIC-B.ST
+  - ABB.ST
+  - ^OMX
+  - ^OMXC20
+
+ICA.ST:
+  - HM-B.ST
+  - ELUX-B.ST
+  - ERIC-B.ST
+  - ATCO-B.ST
+  - ^OMX
+  - ^OMXC20
