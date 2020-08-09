@@ -14,7 +14,7 @@ import yfinance as yf
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
-from sklearn.externals import joblib
+import joblib
 
 import tensorflow as tf
 from keras.models import Sequential
