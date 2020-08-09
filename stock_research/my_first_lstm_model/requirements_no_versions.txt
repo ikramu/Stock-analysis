@@ -1,0 +1,15 @@
+numpy
+pandas
+matplotlib
+seaborn
+sklearn
+yfinance
+ipywidgets
+PyYAML
+ipywidgets
+tqdm
+tensorflow
+tensorflow-estimator
+Keras
+Keras-Applications
+Keras-Preprocessing
