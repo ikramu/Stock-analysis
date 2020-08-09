@@ -8,7 +8,11 @@ The following figure shows model performance for next minute prediction `p=0` on
 
 First install the required libraries as follows.
 
-`pip3 install -r requirements.txt `
+`pip3 install -r requirements.txt`
+
+In case installation is unsucessful due to clash with any existing libraries, install the missing libraries as follows.
+
+`pip3 install -r requirements_no_versions.txt`
 
 Try the H\&M model using following command
 
