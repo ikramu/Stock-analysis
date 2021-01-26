@@ -37,8 +37,8 @@ se:
 dbInfo:
   dbHost: localhost
   dbName: yfinance
-  dbUser: ikramu
-  dbPasswd: Lums1234
+  dbUser: dbUser
+  dbPasswd: dbPasswd
   tableName: 
     crypto: crypto
     us: us
