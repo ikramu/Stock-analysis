@@ -64,6 +64,20 @@ class TrainDataReader(DataReader):
         self._mydb.close()
         print('MySQL connection closed successfully')
 
+    def execute_sql_command(self, sql):
+        self.start_mysql_connection()
+        self._mycursor.execute(sql, multi = True)
+        try:
+            self._mydb.commit()
+        except Exception as e:
+            print('################################################################')
+            print(e)
+            print('ERROR: Could not execute the sql command')
+            self._mydb.rollback()
+            print('################################################################')
+        self._mydb.close()
+        print('MySQL connection closed successfully')
+
     # Update 20210214: For low-resolution data (such as hourly/daily) for all OMX stock (which are in hundreds),  
     # We will save each stock data in its own table. Therefore, we will send table info in function signature
     # Previously, one table was sent in class definition and used for all stocks in question
