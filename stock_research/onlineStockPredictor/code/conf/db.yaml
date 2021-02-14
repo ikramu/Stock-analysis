@@ -1,7 +1,7 @@
 dbHost: localhost
-dbName: yfinance
-dbUser: ikramu
-dbPasswd: Lums1234
+dbName: dbName
+dbUser: dbUser
+dbPasswd: dbPasswd
 tableName: 
   crypto: crypto
   us: us
