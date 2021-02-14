@@ -1,0 +1,19 @@
+batchsize: '100'
+epochs: '100'
+markettype: se
+predcolnum: '3'
+predlen: '1'
+predstep: '1'
+stockname: XSPRAY.ST
+stocks:
+- XSPRAY.ST
+- AZN.ST
+- SOBI.ST
+- EKTA-B.ST
+- GETI-B.ST
+- XBRANE.ST
+- ONCO.ST
+- HNSA.ST
+- RAY.ST
+- ^OMX
+timesteps: '60'

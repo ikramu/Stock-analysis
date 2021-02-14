@@ -1,0 +1,100 @@
+
+XSPRAY.ST:
+  - AZN.ST
+  - SOBI.ST
+  - EKTA-B.ST
+  - GETI-B.ST
+  - XBRANE.ST
+  - ONCO.ST
+  - HNSA.ST
+  - RAY.ST
+  - ^OMX
+AZN.ST:
+  - XSPRAY.ST
+  - SOBI.ST
+  - EKTA-B.ST
+  - GETI-B.ST
+  - XBRANE.ST
+  - ONCO.ST
+  - HNSA.ST
+  - RAY.ST
+  - ^OMX
+
+SOBI.ST:
+  - XSPRAY.ST
+  - AZN.ST
+  - EKTA-B.ST
+  - GETI-B.ST
+  - XBRANE.ST
+  - ONCO.ST
+  - HNSA.ST
+  - RAY.ST
+  - ^OMX
+
+ERIC-B.ST:
+  - ICA.ST
+  - ELUX-B.ST
+  - NOKIA-SEK.ST
+  - ABB.ST
+  - LATO-B.ST
+  - ALFA.ST
+  - ATCO-B.ST
+  - ^OMX
+  - ^OMXC20
+
+HM-B.ST:
+  - ICA.ST
+  - ELUX-B.ST
+  - ERIC-B.ST
+  - ABB.ST
+  - LATO-B.ST
+  - ALFA.ST
+  - ATCO-B.ST
+  - ^OMX
+  - ^OMXC20
+
+CI-B.ST:
+  - IMPC.ST
+  - PCELL.ST
+  - MYFC.ST
+  - HEX.OL
+  - CE.ST
+  - ALELIO.ST
+  - ^OMX
+  - ^OMXC20
+
+PCELL.ST:
+  - CI-B.ST
+  - IMPC.ST
+  - MYFC.ST
+  - HEX.OL
+  - CE.ST
+  - ALELIO.ST
+  - ^OMX
+  - ^OMXC20
+
+IMPC.ST:
+  - CI-B.ST
+  - PCELL.ST
+  - MYFC.ST
+  - HEX.OL
+  - CE.ST
+  - ALELIO.ST
+  - ^OMX
+  - ^OMXC20
+
+BTC-USD:
+  - BCH-USD 
+  - BNB-USD
+  - ETH-USD
+  - LTC-USD
+  - USDT-USD
+  - XRP-USD
+
+ETH-USD:
+  - BCH-USD 
+  - BNB-USD
+  - BTC-USD
+  - LTC-USD
+  - USDT-USD
+  - XRP-USD

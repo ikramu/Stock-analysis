@@ -1,0 +1,17 @@
+dbHost: localhost
+dbInfo: 
+  crypto: 
+    db: crypto
+    trainTable: crTrain
+    inferTable: crInfer
+    verdictTable: crVerdict
+  us: 
+    db: us
+    trainTable: usTrain
+    inferTable: usInfer
+    verdictTable: usVerdictdbUs
+  se: 
+    db: se
+    trainTable: seTrain
+    inferTable: seInfer
+    verdictTable: seVerdict

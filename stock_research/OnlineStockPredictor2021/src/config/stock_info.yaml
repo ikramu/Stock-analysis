@@ -1,0 +1,36 @@
+
+crypto:
+  - BCH-USD 
+  - BTC-USD
+  - BNB-USD
+  - ETH-USD
+  - LTC-USD
+  - USDT-USD
+  - XRP-USD
+
+se:
+  - HM-B.ST
+  - ICA.ST
+  - ELUX-B.ST
+  - ERIC-B.ST
+  - ABB.ST
+  - LATO-B.ST
+  - ALFA.ST
+  - XSPRAY.ST
+  - AZN.ST
+  - OASM.ST
+  - SENS.ST
+  - SOBI.ST
+  - EKTA-B.ST
+  - GETI-B.ST
+  - XBRANE.ST
+  - ONCO.ST
+  - HNSA.ST
+  - RAY.ST
+  - ATCO-B.ST
+  - CI-B.ST
+  - IMPC.ST
+  - PCELL.ST
+  - MYFC.ST
+  - ^OMX
+  - ^OMXC20
