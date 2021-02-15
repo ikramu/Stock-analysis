@@ -15,7 +15,7 @@ class TrainDataReader(DataReader):
         self._dbTable = dbTable
         self._stocks = stocks
 
-    def download_max_stock_data(self, interval = '1m', end_date = datetime.now(), table = None, of_pref='/tmp/stock_'):
+    def download_max_stock_data(self, interval = '1m', end_date = datetime.now(), dayDelta = 7, table = None, of_pref='/tmp/stock_'):
         if table is None:
             table = self._dbTable
         enddate = end_date
@@ -26,11 +26,11 @@ class TrainDataReader(DataReader):
             bigdf = pd.DataFrame()
             
             while data_remaining:
-                start_date = end_date - timedelta(days=7)
+                start_date = end_date - timedelta(days=dayDelta)
                 if start_date < last_date_stock:
                     data_remaining = False
 
-                df = yf.download(stock, start=start_date, end=end_date, interval=interval)
+                df = yf.download(stock+'.ST', start=start_date, end=end_date, interval=interval)
                 if(df.shape[0] == 0):
                     print('No more data available, exiting out of current loop...')
                     print('**************************************')
@@ -54,7 +54,7 @@ class TrainDataReader(DataReader):
     def get_last_saved_stock_date(self, stock, table):
         self.start_mysql_connection()
         #sql = "SELECT * from " + self._dbTable + " where Ticker = '" + stock + "' ORDER BY Datetime DESC limit 10"
-        sql = "SELECT * from " + table + " where Ticker = '" + stock + "' ORDER BY Datetime DESC limit 10"
+        sql = "SELECT * from `" + table + "` where Ticker = '" + stock + "' ORDER BY Datetime DESC limit 10"
         res = pd.read_sql(sql, self._mydb)
         if res.shape[0] > 0:
             return pd.to_datetime(res['Datetime'][0])
@@ -84,7 +84,7 @@ class TrainDataReader(DataReader):
     def saveStockData(self, table, df):
         self.start_mysql_connection()
         #sql = 'INSERT IGNORE INTO ' + self._dbTable + '(' + ', '.join(df.columns) 
-        sql = 'INSERT IGNORE INTO ' + table + '(' + ', '.join(df.columns) 
+        sql = 'INSERT IGNORE INTO `' + table + '`(' + ', '.join(df.columns) 
         sql += ') VALUES (%s, %s, %s, %s, %s, %s, %s)' 
         try:
             df=df.astype({'Datetime': str}) 
