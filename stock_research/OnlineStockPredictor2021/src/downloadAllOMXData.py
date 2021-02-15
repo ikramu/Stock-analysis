@@ -58,19 +58,28 @@ if __name__ == '__main__':
     # read stock dataframe
     omxDf = pd.read_csv(dirPath+ '/../docs/research/nasdaqOmxStocksInfo.csv')
 
-    stocks = omxDf['yfSymbol'].tolist()
-    sql = createSqlForAllTables('omx', stocks)
-
-    # save the sql file 
-    txtfile = open(dirPath+ '/config/allOmxTableDef.sql', 'w')
-    txtfile.write(sql)
-    txtfile.close()
+    stocks = omxDf['yfSymbol'].apply(lambda x: x.replace('.ST', ''))
+    stocks = stocks.tolist()
 
     trainDl = TrainDataReader(dbHost = os.environ['dbHost'], dbUser = os.environ['dbUser'], 
-    dbPasswd = os.environ['dbPasswd'], dbName = 'omx', dbTable = 'dummy', stocks = stocks)
+    dbPasswd = os.environ['dbPasswd'], dbName = 'omx', dbTable = 'Min5', stocks = stocks)
 
-    trainDl.execute_sql_command(sql)
+    # save the sql file 
+    #sql = createSqlForAllTables('omx', stocks)
+    #txtfile = open(dirPath+ '/config/allOmxTableDef.sql', 'w')
+    #txtfile.write(sql)
+    #txtfile.close()
+
+    # yahoo finance ranges
+    # 1 min = 30 days    
+    # 5 min = 60 days    
+    # 15 min = 60 days    
+
+    #trainDl.execute_sql_command(sql)
     # this is to download high-resolution data (1 minute resolution)
-    trainDl.download_max_stock_data(interval = '1m', end_date = datetime.now(), table = None)
-    
+    # trainDl.download_max_stock_data(interval = '1m', end_date = datetime.now(), dayDelta = 7, table = None)
+
+ 
+    trainDl.download_max_stock_data(interval = '5m', end_date = datetime.now(), dayDelta = 59)
+
     print('Download completed\n')
