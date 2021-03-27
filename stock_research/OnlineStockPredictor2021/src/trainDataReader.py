@@ -30,7 +30,7 @@ class TrainDataReader(DataReader):
                 if start_date < last_date_stock:
                     data_remaining = False
 
-                df = yf.download(stock+'.ST', start=start_date, end=end_date, interval=interval)
+                df = yf.download(stock+".ST", start=start_date, end=end_date, interval=interval)
                 if(df.shape[0] == 0):
                     print('No more data available, exiting out of current loop...')
                     print('**************************************')
@@ -110,12 +110,14 @@ class TrainDataReader(DataReader):
         self._mydb.close()
         print('MySQL connection closed successfully')
 
-    def readStockData(self, end_date = datetime.now()):
-        start_date = end_date - timedelta(days=30)
+    def readStockData(self, end_date = datetime.now(), numDays=30, table = None):
+        start_date = end_date - timedelta(days=numDays)
+        if table is None:
+            table = self._dbTable
         self.start_mysql_connection()
-        command = "select Datetime, Ticker, Close from seTrain where Ticker in ('" + "','".join(self._stocks) + "') and Datetime BETWEEN ' + str(start_date) + ' and curdate();"
+        print('Fetching data...')
+        command = "select Datetime, Ticker, Close from " + table + " where Ticker in ('" + "','".join(self._stocks) + "') and Datetime BETWEEN '" + str(start_date) + "' and '" + str(end_date) + "' ;"
         result = pd.read_sql(command, self._mydb)
-        #self._mycursor.execute(command)
-        #result = self._mycursor.fetchall()
+        print('Done...')
         
         return result
