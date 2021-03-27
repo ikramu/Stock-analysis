@@ -1,0 +1,15 @@
+batchsize: '100'
+epochs: '100'
+predcolnum: '3'
+predlen: '1'
+predstep: '1'
+stockname: HM-B.ST
+stocks:
+- HM-B.ST
+- ICA.ST
+- ELUX-B.ST
+- ERIC-B.ST
+- ABB.ST
+- ^OMX
+- ^OMXC20
+timesteps: '60'

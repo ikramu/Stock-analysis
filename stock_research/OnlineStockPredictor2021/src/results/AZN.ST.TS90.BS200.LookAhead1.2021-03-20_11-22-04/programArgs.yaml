@@ -1,0 +1,22 @@
+batchsize: '200'
+daysfortesting: '5'
+epochs: '200'
+markettype: se
+predlen: '1'
+predstep: '1'
+stockname: AZN.ST
+dbName: se
+dbHost: localhost
+dbTable: seTrain
+stocks:
+- AZN.ST
+- XSPRAY.ST
+- SOBI.ST
+- EKTA-B.ST
+- GETI-B.ST
+- XBRANE.ST
+- ONCO.ST
+- HNSA.ST
+- RAY.ST
+- ^OMX
+timesteps: '90'

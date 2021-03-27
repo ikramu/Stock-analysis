@@ -1,4 +1,5 @@
 
+
 crypto:
   - BCH-USD 
   - BTC-USD
@@ -26,7 +27,7 @@ se:
   - XBRANE.ST
   - ONCO.ST
   - HNSA.ST
-  - RAY.ST
+  - RAY-B.ST
   - ATCO-B.ST
   - CI-B.ST
   - IMPC.ST

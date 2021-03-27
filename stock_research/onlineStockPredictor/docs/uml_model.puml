@@ -1,0 +1,10 @@
+@startuml
+actor User
+
+database Database
+User -> Server: request
+Server -> User: yes
+Database -> Server: 
+Server -> User: yes
+
+@enduml
