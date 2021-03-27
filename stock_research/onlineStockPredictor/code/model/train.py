@@ -21,6 +21,12 @@ import argparse
 def readCommandLineArgs(now):
         parser = argparse.ArgumentParser(description='LSTM model to predict next nth min stock price')
         parser.add_argument(
+            '-m',
+            '--markettype',
+            default='se',
+            help='Stock market (string), default=\"se\"'
+        )
+        parser.add_argument(
             '-s',
             '--stockname',
             default='HM-B.ST',
@@ -64,7 +70,7 @@ def readCommandLineArgs(now):
         )
         
         cmd_args = parser.parse_args()
-        #print("Number of minutes to predict: ", cmd_args.predlen)
+        market_type = str(cmd_args.markettype)
         stock_name = str(cmd_args.stockname)
         pred_len = int(cmd_args.predlen)
         pred_step = int(cmd_args.predstep)
@@ -72,7 +78,7 @@ def readCommandLineArgs(now):
         timesteps = int(cmd_args.timesteps)    
         epochs = int(cmd_args.epochs)
 
-        return cmd_args, stock_name, pred_len, pred_step, batch_size, timesteps, epochs
+        return cmd_args, market_type, stock_name, pred_len, pred_step, batch_size, timesteps, epochs
 
 def main():
     marketType = 'se'
@@ -85,7 +91,7 @@ def main():
     print('Directory path is ' + dirPath)
     
     # read command line arguments
-    cmdArgs, stockName, predictionLength, predictionStep, batchSize, timeSteps, epochs = readCommandLineArgs(now)
+    cmdArgs, marketType, stockName, predictionLength, predictionStep, batchSize, timeSteps, epochs = readCommandLineArgs(now)
 
     dirName = stockName+'.TS'+str(timeSteps)+'.BS'+str(batchSize)+'.LookAhead'+str(predictionStep)+'.'+now
     snapshotDir = os.path.join(basePath, 'results', dirName)
