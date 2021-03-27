@@ -20,7 +20,6 @@ from trainDataReader import TrainDataReader
 
 class ModelTrainer(object):
     """ super class for reader classes for training and inference 
-
     """ 
     def __init__(self, dbHost, dbUser, dbPasswd, dbName,dbTable, stocks, snapshotDir):
         super().__init__()
@@ -96,7 +95,7 @@ class ModelTrainer(object):
         model.compile(loss='mean_squared_error', optimizer=optimizer)
         return model
     
-    def compute_sq_error(self, lstm_model, x_test_data, y_test_data, batchSize, predColId):
+    def compute_sq_error(self, lstm_model, x_test_data, y_test_data, batchSize, predColId, outfile):
         # compute model error
         print('Computing model error...')
         y_pred = lstm_model.predict(x_test_data, batch_size=batchSize)
@@ -109,7 +108,7 @@ class ModelTrainer(object):
 
         error = mean_squared_error(y_orig_prices, y_pred_prices)
 
-        self.plotRealVsPred(y_pred_prices, y_orig_prices, error, '/tmp/predVsReal.png')
+        self.plotRealVsPred(y_pred_prices, y_orig_prices, error, outfile)
         return error
 
     def plotAccuracyLoss(self, history, outdir):
@@ -134,68 +133,78 @@ class ModelTrainer(object):
         plt.legend(['Prediction', 'Real'], loc='upper left')
         plt.savefig(outfile, dpi = 100)   # save the figure to file
         
-def readCommandLineArgs(now):
-        parser = argparse.ArgumentParser(description='LSTM model to predict next nth min stock price')
-        parser.add_argument(
-            '-m',
-            '--markettype',
-            default='se',
-            help='Stock market (string), default=\"se\"'
-        )
-        parser.add_argument(
-            '-s',
-            '--stockname',
-            default='XSPRAY.ST',
-            help='Stock name (string), default=\"XSPRAY.ST\"'
-        )
-        parser.add_argument(
-            '-n',
-            '--predlen',
-            default='1',
-            help='Number of steps to predict (int), default=1'
-        )
-        parser.add_argument(
-            '-p',
-            '--predstep',
-            default='1',
-            help='How many steps ahead to predict (int), default=1, i.e., the next minute'
-        )
-        parser.add_argument(
-            '-b',
-            '--batchsize',
-            default = '100',
-            help = 'Batch size for the model (int), default=100'
-        )
-        parser.add_argument(
-            '-d',
-            '--daysfortesting',
-            default = '3',
-            help = 'Number of days to use for testing the model (int), default=3'
-        )
-        parser.add_argument(
-            '-t',
-            '--timesteps',
-            default='60',
-            help='Time steps for the model (int), default=60'
-        )
-        parser.add_argument(
-            '-e',
-            '--epochs',
-            default='100',
-            help='Number of epochs (int), default=100'
-        )
-        
-        cmd_args = parser.parse_args()
-        market_type = str(cmd_args.markettype)
-        stock_name = str(cmd_args.stockname)
-        pred_len = int(cmd_args.predlen)
-        test_days = int(cmd_args.daysfortesting)
-        pred_step = int(cmd_args.predstep)
-        batch_size = int(cmd_args.batchsize)
-        timesteps = int(cmd_args.timesteps)    
-        epochs = int(cmd_args.epochs)
+def readCommandLineArgs():
+    dirPath = os.path.dirname(os.path.realpath(__file__))
+    now=datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    snapshotDir = os.path.join(dirPath, 'results', now)
+    parser = argparse.ArgumentParser(description='LSTM model to predict next nth min stock price')
+    parser.add_argument(
+        '-m',
+        '--markettype',
+        default='se',
+        help='Stock market (string), default=\"se\"'
+    )
+    parser.add_argument(
+        '-s',
+        '--stockname',
+        default='XSPRAY.ST',
+        help='Stock name (string), default=\"XSPRAY.ST\"'
+    )
+    parser.add_argument(
+        '-n',
+        '--predlen',
+        default='1',
+        help='Number of steps to predict (int), default=1'
+    )
+    parser.add_argument(
+        '-p',
+        '--predstep',
+        default='1',
+        help='How many steps ahead to predict (int), default=1, i.e., the next minute'
+    )
+    parser.add_argument(
+        '-b',
+        '--batchsize',
+        default = '100',
+        help = 'Batch size for the model (int), default=100'
+    )
+    parser.add_argument(
+        '-d',
+        '--daysfortesting',
+        default = '3',
+        help = 'Number of days to use for testing the model (int), default=3'
+    )
+    parser.add_argument(
+        '-t',
+        '--timesteps',
+        default='60',
+        help='Time steps for the model (int), default=60'
+    )
+    parser.add_argument(
+        '-e',
+        '--epochs',
+        default='100',
+        help='Number of epochs (int), default=100'
+    )
+    parser.add_argument(
+        '-o',
+        '--outdir',
+        default=snapshotDir,
+        help='Output directory for writing model and results (string), default=' + os.path.join(dirPath, 'results', 'current_timestamp')
+    )
+    
+    cmd_args = parser.parse_args()
+    market_type = str(cmd_args.markettype)
+    stock_name = str(cmd_args.stockname)
+    pred_len = int(cmd_args.predlen)
+    test_days = int(cmd_args.daysfortesting)
+    pred_step = int(cmd_args.predstep)
+    batch_size = int(cmd_args.batchsize)
+    timesteps = int(cmd_args.timesteps)    
+    epochs = int(cmd_args.epochs)
+    outdir = str(cmd_args.outdir)
 
-        return cmd_args, market_type, stock_name, test_days, pred_len, pred_step, batch_size, timesteps, epochs
+    return cmd_args, market_type, stock_name, test_days, pred_len, pred_step, batch_size, timesteps, epochs, outdir
 
 if __name__ == '__main__':
     # import local library functions
@@ -207,14 +216,14 @@ if __name__ == '__main__':
 
     # main directory is two steps up
     basePath = os.path.dirname(os.path.dirname(dirPath))
-    now=datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    #now=datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     print('Directory path is ' + dirPath)
 
     # read command line arguments
-    cmdArgs, stockMarket, stockName, numOfTestingDays, predictionLength, predictionStep, batchSize, timeSteps, epochs = readCommandLineArgs(now)
+    cmdArgs, stockMarket, stockName, numOfTestingDays, predictionLength, predictionStep, batchSize, timeSteps, epochs, snapshotDir = readCommandLineArgs()
 
-    dirName = stockName+'.TS'+str(timeSteps)+'.BS'+str(batchSize)+'.LookAhead'+str(predictionStep)+'.'+now
-    snapshotDir = os.path.join(dirPath, 'results', dirName)
+    #dirName = stockName+'.TS'+str(timeSteps)+'.BS'+str(batchSize)+'.LookAhead'+str(predictionStep)+'.'+now
+    #snapshotDir = os.path.join(dirPath, 'results', dirName)
 
     print(snapshotDir)
     os.makedirs(snapshotDir, exist_ok=True)
@@ -238,6 +247,11 @@ if __name__ == '__main__':
     # first add all the stocks_info
     argsDict = vars(cmdArgs)
     argsDict['stocks'] = allStocks
+
+    # add db related variables
+    argsDict['dbName'] = dbInfo['db']
+    argsDict['dbHost'] = dbInfo['dbHost']
+    argsDict['dbTable'] = dbInfo['trainTable']
 
     with open(os.path.join(snapshotDir,'programArgs.yaml'), 'w') as claFile:
         yaml.dump(argsDict, claFile)
@@ -279,7 +293,8 @@ if __name__ == '__main__':
     
     #lstm_model = load_model('/tmp/lstm_model.tf', compile=True)
 
-    error = mt.compute_sq_error(lstm_model, x_v, y_v, batchSize, predColId)
+    perfPlot = os.path.join(snapshotDir,'perf_plot.jpg')
+    error = mt.compute_sq_error(lstm_model, x_v, y_v, batchSize, predColId, perfPlot)
     print("mean squared error of the model is", error)
 
     # write model to file 
@@ -287,6 +302,6 @@ if __name__ == '__main__':
     print('Writing model to ' + modelPath)
     lstm_model.save(modelPath)
 
-    print('Analysis done. Check ' + outfile + ' for the plot\n')
+    print('Analysis done. Check ' + perfPlot + ' for the plot\n')
     
 

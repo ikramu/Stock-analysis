@@ -13,11 +13,18 @@ def readCommandLineArgs():
             default='se',
             help='Stock market (string), default=\"se\"'
         )
+        parser.add_argument(
+            '-i',
+            '--interval',
+            default='2m',
+            help='Interval (or granularity) of data (int), default=\"2m\"'
+        )
         
         cmd_args = parser.parse_args()
         market_type = str(cmd_args.markettype)
+        interval = str(cmd_args.interval)
 
-        return market_type
+        return market_type, interval
 
 def createSqlForAllTables(dbName, stocks):
     '''
@@ -55,14 +62,20 @@ if __name__ == '__main__':
     # import local library functions
     dirPath = os.path.dirname(os.path.realpath(__file__))
 
+    stockMarket, interval = readCommandLineArgs()
+
     # read stock dataframe
     omxDf = pd.read_csv(dirPath+ '/../docs/research/nasdaqOmxStocksInfo.csv')
 
     stocks = omxDf['yfSymbol'].apply(lambda x: x.replace('.ST', ''))
     stocks = stocks.tolist()
+    if interval[-1] == 'm':
+        dbTable = 'Min'+interval[:len(interval)-1] 
+    else:
+        dbTable = 'Day'+interval[:len(interval)-1] 
 
     trainDl = TrainDataReader(dbHost = os.environ['dbHost'], dbUser = os.environ['dbUser'], 
-    dbPasswd = os.environ['dbPasswd'], dbName = 'omx', dbTable = 'Min5', stocks = stocks)
+    dbPasswd = os.environ['dbPasswd'], dbName = 'omx', dbTable = dbTable, stocks = stocks)
 
     # save the sql file 
     #sql = createSqlForAllTables('omx', stocks)
@@ -79,7 +92,9 @@ if __name__ == '__main__':
     # this is to download high-resolution data (1 minute resolution)
     # trainDl.download_max_stock_data(interval = '1m', end_date = datetime.now(), dayDelta = 7, table = None)
 
+    print('Downloading data for ' + stockMarket + ' market')
+    print('Interval is ' + interval)
  
-    trainDl.download_max_stock_data(interval = '5m', end_date = datetime.now(), dayDelta = 59)
+    trainDl.download_max_stock_data(interval = interval, end_date = datetime.now(), dayDelta = 59)
 
     print('Download completed\n')
