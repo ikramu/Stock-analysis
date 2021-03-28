@@ -33,8 +33,13 @@ class ModelTrainer(object):
         self._tdReader = TrainDataReader(dbHost = dbHost, dbUser = dbUser, dbPasswd = dbPasswd, 
         dbName = dbName, dbTable = dbTable, stocks = stocks)
 
-    def readTrainingData(self, end_date):
+    def get_percentage_data(self, rawData):
+        print(rawData.head())
+
+    def readTrainingData(self, end_date, perc_change = False):
         trData = self._tdReader.readStockData(end_date)
+        if perc_change:
+            trData = self.get_percentage_data(trData)
         return trData
     
     def normalizeDataAndSave(self, train, valid):
@@ -136,7 +141,6 @@ class ModelTrainer(object):
 def readCommandLineArgs():
     dirPath = os.path.dirname(os.path.realpath(__file__))
     now=datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    snapshotDir = os.path.join(dirPath, 'results', now)
     parser = argparse.ArgumentParser(description='LSTM model to predict next nth min stock price')
     parser.add_argument(
         '-m',
@@ -186,12 +190,6 @@ def readCommandLineArgs():
         default='100',
         help='Number of epochs (int), default=100'
     )
-    parser.add_argument(
-        '-o',
-        '--outdir',
-        default=snapshotDir,
-        help='Output directory for writing model and results (string), default=' + os.path.join(dirPath, 'results', 'current_timestamp')
-    )
     
     cmd_args = parser.parse_args()
     market_type = str(cmd_args.markettype)
@@ -202,9 +200,9 @@ def readCommandLineArgs():
     batch_size = int(cmd_args.batchsize)
     timesteps = int(cmd_args.timesteps)    
     epochs = int(cmd_args.epochs)
-    outdir = str(cmd_args.outdir)
 
-    return cmd_args, market_type, stock_name, test_days, pred_len, pred_step, batch_size, timesteps, epochs, outdir
+
+    return cmd_args, market_type, stock_name, test_days, pred_len, pred_step, batch_size, timesteps, epochs
 
 if __name__ == '__main__':
     # import local library functions
@@ -216,11 +214,12 @@ if __name__ == '__main__':
 
     # main directory is two steps up
     basePath = os.path.dirname(os.path.dirname(dirPath))
-    #now=datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    now=datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     print('Directory path is ' + dirPath)
 
     # read command line arguments
-    cmdArgs, stockMarket, stockName, numOfTestingDays, predictionLength, predictionStep, batchSize, timeSteps, epochs, snapshotDir = readCommandLineArgs()
+    cmdArgs, stockMarket, stockName, numOfTestingDays, predictionLength, predictionStep, batchSize, timeSteps, epochs = readCommandLineArgs()
+    snapshotDir = os.path.join(dirPath, 'results', stockName+'_'+now)
 
     #dirName = stockName+'.TS'+str(timeSteps)+'.BS'+str(batchSize)+'.LookAhead'+str(predictionStep)+'.'+now
     #snapshotDir = os.path.join(dirPath, 'results', dirName)
@@ -250,7 +249,7 @@ if __name__ == '__main__':
 
     # add db related variables
     argsDict['dbName'] = dbInfo['db']
-    argsDict['dbHost'] = dbInfo['dbHost']
+    argsDict['dbHost'] = os.environ['dbHost']
     argsDict['dbTable'] = dbInfo['trainTable']
 
     with open(os.path.join(snapshotDir,'programArgs.yaml'), 'w') as claFile:
